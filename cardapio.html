@@ -41,81 +41,158 @@
  <main class="py-5">
     <div class="container">
         <!-- Entradas Section -->
-        <section id="entradas">
-            <h2 class="text-center mb-4">Entradas</h2>
-<div class="row">
-    <!-- Card 1 -->
-    <div class="col-lg-6 col-md-12 mb-4">
-        <div class="card">
-            <div class="row g-0">
-                <!-- Imagem -->
-                <div class="col-4 d-flex align-items-center">
-                    <img src="imagens/bruchettas.jpg" 
-                         class="img-fluid rounded-start w-100" 
-                         alt="Bruschetta" 
-                        >
-                </div>
-                <!-- Conteúdo -->
-                <div class="col-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Bruschetta</h5>
-                        <p class="card-text">Fatias de pão com tomate e manjericão.</p>
-                        <span class="text-danger fw-bold">R$ 15,00</span>
-                    </div>
-                </div>
+<section id="entradas">
+    <h2 class="text-center mb-4">Entradas</h2>
+    <div class="row">
+        <!-- Card 1 -->
+      <!-- Card -->
+<div class="col-lg-6 col-md-12 mb-4">
+    <div class="card">
+        <div class="row g-0">
+            <!-- Imagem -->
+            <div class="col-4 d-flex align-items-center">
+                <img src="imagens/bruchettas.jpg" 
+                     class="img-fluid rounded-start w-100" 
+                     alt="Bruschetta">
             </div>
-        </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="col-lg-6 col-md-12 mb-4">
-        <div class="card">
-            <div class="row g-0">
-                <!-- Imagem -->
-                <div class="col-4 d-flex align-items-center">
-                    <img src="imagens/chedarbacon.jpg" 
-                         class="img-fluid rounded-start w-100" 
-                         alt="Cheddar Bacon" 
-                         >
-                </div>
-                <!-- Conteúdo -->
-                <div class="col-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Cheddar Bacon</h5>
-                        <p class="card-text">Hambúrguer com cheddar e bacon.</p>
-                        <span class="text-danger fw-bold">R$ 45,00</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="col-lg-6 col-md-12 mb-4">
-        <div class="card">
-            <div class="row g-0">
-                <!-- Imagem -->
-                <div class="col-4 d-flex align-items-center">
-                    <img src="imagens/batatafrita.jpg" 
-                         class="img-fluid rounded-start w-100" 
-                         alt="Batata Frita" 
-                       >
-                </div>
-                <!-- Conteúdo -->
-                <div class="col-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Batata Frita</h5>
-                        <p class="card-text">Meia porção de batata frita.</p>
-                        <span class="text-danger fw-bold">R$ 25,00</span>
-                    </div>
+            <!-- Conteúdo -->
+            <div class="col-8">
+                <div class="card-body">
+                    <h5 class="card-title">Bruschetta</h5>
+                    <p class="card-text">Fatias de pão com tomate e manjericão.</p>
+                    <span class="text-danger fw-bold">R$ 15,00</span>
+                    <br>
+                    <!-- Botão para abrir o modal -->
+                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalBruschetta">
+                        Ver mais detalhes
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-       </section>
+<!-- Modal -->
+<div class="modal fade" id="modalBruschetta" tabindex="-1" aria-labelledby="modalBruschettaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Cabeçalho -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalBruschettaLabel">Detalhes da Bruschetta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Corpo -->
+            <div class="modal-body">
+               <img src="imagens/bruchettas.jpg" 
+                     class="img-fluid rounded-start w-100" 
+                     alt="Bruschetta">
+                <p><strong>Descrição:</strong> Fatias de pão com tomate e manjericão, temperadas com azeite de oliva.</p>
+                <p><strong>Opções de tamanho:</strong></p>
+                <ul>
+                    <li>Porção para 1 pessoa: <span class="text-danger fw-bold">R$ 15,00</span></li>
+                    <li>Porção para 2 pessoas: <span class="text-danger fw-bold">R$ 25,00</span></li>
+                    <li>Porção para 3 ou mais: <span class="text-danger fw-bold">R$ 35,00</span></li>
+                </ul>
+            </div>
+            <!-- Rodapé -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card">
+                <div class="row g-0">
+                    <!-- Imagem -->
+                    <div class="col-4 d-flex align-items-center">
+                        <img src="imagens/chedarbacon.jpg" 
+                             class="img-fluid rounded-start w-100" 
+                             alt="Cheddar Bacon">
+                    </div>
+                    <!-- Conteúdo -->
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Cheddar Bacon</h5>
+                            <p class="card-text">Hambúrguer com cheddar e bacon.</p>
+                            <span class="text-danger fw-bold">R$ 45,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card">
+                <div class="row g-0">
+                    <!-- Imagem -->
+                    <div class="col-4 d-flex align-items-center">
+                        <img src="imagens/batatafrita.jpg" 
+                             class="img-fluid rounded-start w-100" 
+                             alt="Batata Frita">
+                    </div>
+                    <!-- Conteúdo -->
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Batata Frita</h5>
+                            <p class="card-text">Meia porção de batata frita.</p>
+                            <span class="text-danger fw-bold">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 (duplicado) -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card">
+                <div class="row g-0">
+                    <!-- Imagem -->
+                    <div class="col-4 d-flex align-items-center">
+                        <img src="imagens/batatafrita.jpg" 
+                             class="img-fluid rounded-start w-100" 
+                             alt="Batata Frita">
+                    </div>
+                    <!-- Conteúdo -->
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Batata Frita</h5>
+                            <p class="card-text">Meia porção de batata frita.</p>
+                            <span class="text-danger fw-bold">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 (duplicado) -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card">
+                <div class="row g-0">
+                    <!-- Imagem -->
+                    <div class="col-4 d-flex align-items-center">
+                        <img src="imagens/batatafrita.jpg" 
+                             class="img-fluid rounded-start w-100" 
+                             alt="Batata Frita">
+                    </div>
+                    <!-- Conteúdo -->
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Batata Frita</h5>
+                            <p class="card-text">Meia porção de batata frita.</p>
+                            <span class="text-danger fw-bold">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <hr>
+
             <!-- Adicione mais rows e cards aqui -->
 
  
@@ -145,6 +222,70 @@
         </div>
     </div>
 
+<div class="col-lg-6 col-md-12 mb-4">
+        <div class="card">
+            <div class="row g-0">
+                <!-- Imagem -->
+                <div class="col-4 d-flex align-items-center">
+                    <img src="imagens/bruchettas.jpg" 
+                         class="img-fluid rounded-start w-100" 
+                         alt="Bruschetta" 
+                        >
+                </div>
+                <!-- Conteúdo -->
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Bruschetta</h5>
+                        <p class="card-text">Fatias de pão com tomate e manjericão.</p>
+                        <span class="text-danger fw-bold">R$ 15,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12 mb-4">
+        <div class="card">
+            <div class="row g-0">
+                <!-- Imagem -->
+                <div class="col-4 d-flex align-items-center">
+                    <img src="imagens/bruchettas.jpg" 
+                         class="img-fluid rounded-start w-100" 
+                         alt="Bruschetta" 
+                        >
+                </div>
+                <!-- Conteúdo -->
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Bruschetta</h5>
+                        <p class="card-text">Fatias de pão com tomate e manjericão.</p>
+                        <span class="text-danger fw-bold">R$ 15,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12 mb-4">
+        <div class="card">
+            <div class="row g-0">
+                <!-- Imagem -->
+                <div class="col-4 d-flex align-items-center">
+                    <img src="imagens/bruchettas.jpg" 
+                         class="img-fluid rounded-start w-100" 
+                         alt="Bruschetta" 
+                        >
+                </div>
+                <!-- Conteúdo -->
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Bruschetta</h5>
+                        <p class="card-text">Fatias de pão com tomate e manjericão.</p>
+                        <span class="text-danger fw-bold">R$ 15,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Card 2 -->
     <div class="col-lg-6 col-md-12 mb-4">
         <div class="card">
