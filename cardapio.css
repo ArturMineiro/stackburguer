@@ -1,4 +1,31 @@
 /* Estilo para o header */
+/* Header */
+header {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+/* Imagem do Header */
+header img {
+    border: 5px solid var(--dourado);
+    max-width: 200px;
+}
+
+/* Título principal */
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--dourado);
+}
+
+/* Subtítulo */
+header p {
+    font-size: 1.2rem;
+    color: var(--cinza-claro);
+}
+
 header img {
     max-width: 150px;
     border: 5px solid white;
@@ -22,3 +49,108 @@ header img {
     transition: transform 0.3s ease-in-out;
 }
 
+/* Paleta de cores */
+/* Footer */
+.footer {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-top: 3px solid var(--dourado);
+}
+
+:root {
+    --verde-escuro: #1B3D2F;
+    --dourado: #C9A227;
+    --marrom-madeira: #8B5A2B;
+    --creme: #F5F1E3;
+    --cinza-claro: #E0E0E0;
+}
+
+/* Estilização Geral */
+body {
+    background-color: var(--creme);
+    color: var(--marrom-madeira);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--verde-escuro) !important;
+}
+
+.navbar-brand {
+    color: var(--dourado) !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: var(--creme) !important;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--dourado) !important;
+}
+
+/* Cards */
+.card {
+    background-color: var(--creme);
+    border: 1px solid var(--cinza-claro);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--verde-escuro);
+    font-weight: bold;
+}
+
+.card-text {
+    color: var(--marrom-madeira);
+}
+
+.image-card {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--dourado);
+    border-color: var(--dourado);
+    color: var(--verde-escuro);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--marrom-madeira);
+    border-color: var(--marrom-madeira);
+    color: var(--creme);
+}
+
+.btn-secondary {
+    background-color: var(--cinza-claro);
+    border-color: var(--cinza-claro);
+    color: var(--verde-escuro);
+}
+
+.btn-secondary:hover {
+    background-color: var(--marrom-madeira);
+    color: var(--creme);
+}
+
+/* Modal */
+.modal-content {
+    background-color: var(--creme);
+}
+
+.modal-header {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+}
+
+.modal-footer {
+    background-color: var(--cinza-claro);
+}

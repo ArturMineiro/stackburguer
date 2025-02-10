@@ -13,3 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
   
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "https://github.com/",
+    width: 200,
+    height: 200
+});
