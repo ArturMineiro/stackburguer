@@ -1,4 +1,15 @@
 /* Estilo para o header */
+.image-card {
+    width: 100%; /* Ocupa 100% da largura disponível */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Estilo para telas pequenas (mobile) */
+@media (max-width: 768px) {
+    .modal img {
+        max-height: 250px; /* Limita a altura da imagem no mobile para que o modal não fique grande */
+    }
+}
 /* Header */
 header {
     background-color: var(--verde-escuro);
