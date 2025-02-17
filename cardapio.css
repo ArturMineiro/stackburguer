@@ -1,9 +1,3 @@
-/* Estilo para o header */ /* 1 - git add . 2 - git commit -m "nome da atualização"  3 - git push */ 
-.image-card {
-    width: 100%; /* Ocupa 100% da largura disponível */
-    height: auto; /* Mantém a proporção da imagem */
-}
-
 /* Estilo para telas pequenas (mobile) */
 @media (max-width: 768px) {
     .modal img {
@@ -17,6 +11,7 @@ header {
     text-align: center;
     padding: 3rem 0;
 }
+
 
 /* Imagem do Header */
 header img {
@@ -52,11 +47,12 @@ header img {
     transform: scale(1.05);
 }
 .image-card {
-    width: 100%; 
+    border: 8px solid var(--creme);
     height: 185px; 
-    border-radius: 8px;
-    object-fit: cover; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-radius: 45px;
+    object-fit: cover;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -126,10 +122,6 @@ body {
     color: var(--marrom-madeira);
 }
 
-.image-card {
-    width: 100%;
-    border-radius: 10px;
-}
 
 /* Botões */
 .btn-primary {
