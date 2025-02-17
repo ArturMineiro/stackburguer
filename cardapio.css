@@ -1,4 +1,4 @@
-/* Estilo para o header */
+/* Estilo para o header */ /* 1 - git add . 2 - git commit -m "nome da atualização"  3 - git push */ 
 .image-card {
     width: 100%; /* Ocupa 100% da largura disponível */
     height: auto; /* Mantém a proporção da imagem */
@@ -20,7 +20,7 @@ header {
 
 /* Imagem do Header */
 header img {
-    border: 5px solid var(--dourado);
+    border: 5px solid var(--laranja);
     max-width: 200px;
 }
 
@@ -28,7 +28,7 @@ header img {
 header h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--dourado);
+    color: var(--laranja);
 }
 
 /* Subtítulo */
@@ -39,7 +39,7 @@ header p {
 
 header img {
     max-width: 150px;
-    border: 5px solid white;
+    border: 5px solid #224537;
 }
 
 /* Card personalização */
@@ -69,13 +69,14 @@ header img {
     padding: 1.5rem 0;
     font-size: 1rem;
     font-weight: 500;
-    border-top: 3px solid var(--dourado);
+    border-top: 3px solid var(--laranja);
 }
 
 :root {
-    --verde-escuro: #1B3D2F;
-    --dourado: #C9A227;
-    --marrom-madeira: #8B5A2B;
+    
+    --verde-escuro: #275643;
+    --laranja: #ea7d17;
+    --marrom-madeira: #c2710f;
     --creme: #F5F1E3;
     --cinza-claro: #E0E0E0;
 }
@@ -89,11 +90,14 @@ body {
 
 /* Navbar */
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: var(--verde-escuro) !important;
 }
 
 .navbar-brand {
-    color: var(--dourado) !important;
+    color: var(--laranja) !important;
     font-weight: bold;
 }
 
@@ -103,7 +107,7 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--dourado) !important;
+    color: var(--laranja) !important;
 }
 
 /* Cards */
@@ -129,8 +133,8 @@ body {
 
 /* Botões */
 .btn-primary {
-    background-color: var(--dourado);
-    border-color: var(--dourado);
+    background-color: var(--laranja);
+    border-color: var(--laranja);
     color: var(--verde-escuro);
     font-weight: bold;
 }
@@ -158,9 +162,13 @@ body {
 }
 
 .modal-header {
-    background-color: var(--verde-escuro);
-    color: var(--creme);
+    color: var(--verde-escuro);
+    /*color: var(--creme);*/
 }
+
+.modal-title {
+    font-size: 150%;
+} 
 
 .modal-footer {
     background-color: var(--cinza-claro);
