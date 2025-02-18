@@ -4,6 +4,10 @@
     .modal img {
         max-height: 250px; /* Limita a altura da imagem no mobile para que o modal não fique grande */
     }
+    .card {
+        width: 90%;
+        max-width: 300px;
+    }
 }
 /* Header */
 header {
@@ -40,20 +44,21 @@ header img {
 
 /* Card personalização */
 .card {
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
+
 
 .card:hover {
     transform: scale(1.05);
 }
 .image-card {
     border: 8px solid var(--creme);
-    height: 185px; 
     width: 100%;
     border-radius: 45px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease-in-out;
 }
 
