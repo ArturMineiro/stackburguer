@@ -1,13 +1,12 @@
-/* Estilo para o header */
-.image-card {
-    width: 100%; /* Ocupa 100% da largura disponível */
-    height: auto; /* Mantém a proporção da imagem */
-}
 
 /* Estilo para telas pequenas (mobile) */
 @media (max-width: 768px) {
     .modal img {
         max-height: 250px; /* Limita a altura da imagem no mobile para que o modal não fique grande */
+    }
+    .card {
+        width: 90%;
+        max-width: 300px;
     }
 }
 /* Header */
@@ -18,9 +17,10 @@ header {
     padding: 3rem 0;
 }
 
+
 /* Imagem do Header */
 header img {
-    border: 5px solid var(--dourado);
+    border: 5px solid var(--laranja);
     max-width: 200px;
 }
 
@@ -28,7 +28,7 @@ header img {
 header h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--dourado);
+    color: var(--laranja);
 }
 
 /* Subtítulo */
@@ -39,24 +39,26 @@ header p {
 
 header img {
     max-width: 150px;
-    border: 5px solid white;
+    border: 5px solid #224537;
 }
 
 /* Card personalização */
 .card {
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
 }
+
 
 .card:hover {
     transform: scale(1.05);
 }
 .image-card {
-    width: 100%; 
-    height: 185px; 
-    border-radius: 8px;
-    object-fit: cover; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid var(--creme);
+    width: 100%;
+    border-radius: 45px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -69,13 +71,14 @@ header img {
     padding: 1.5rem 0;
     font-size: 1rem;
     font-weight: 500;
-    border-top: 3px solid var(--dourado);
+    border-top: 3px solid var(--laranja);
 }
 
 :root {
-    --verde-escuro: #1B3D2F;
-    --dourado: #C9A227;
-    --marrom-madeira: #8B5A2B;
+    
+    --verde-escuro: #275643;
+    --laranja: #ea7d17;
+    --marrom-madeira: #c2710f;
     --creme: #F5F1E3;
     --cinza-claro: #E0E0E0;
 }
@@ -89,11 +92,14 @@ body {
 
 /* Navbar */
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background-color: var(--verde-escuro) !important;
 }
 
 .navbar-brand {
-    color: var(--dourado) !important;
+    color: var(--laranja) !important;
     font-weight: bold;
 }
 
@@ -103,7 +109,7 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--dourado) !important;
+    color: var(--laranja) !important;
 }
 
 /* Cards */
@@ -122,15 +128,11 @@ body {
     color: var(--marrom-madeira);
 }
 
-.image-card {
-    width: 100%;
-    border-radius: 10px;
-}
 
 /* Botões */
 .btn-primary {
-    background-color: var(--dourado);
-    border-color: var(--dourado);
+    background-color: var(--laranja);
+    border-color: var(--laranja);
     color: var(--verde-escuro);
     font-weight: bold;
 }
@@ -158,9 +160,13 @@ body {
 }
 
 .modal-header {
-    background-color: var(--verde-escuro);
-    color: var(--creme);
+    color: var(--verde-escuro);
+    /*color: var(--creme);*/
 }
+
+.modal-title {
+    font-size: 150%;
+} 
 
 .modal-footer {
     background-color: var(--cinza-claro);
