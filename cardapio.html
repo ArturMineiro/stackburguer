@@ -1,1190 +1,1834 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio - Stack Burger</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>Cardápio - Steak Burger</title>
+    <meta
+      name="description"
+      content="Cardápio oficial da Steak Burger — entradas, principais, bebidas e sobremesas."
+    />
+    <meta name="theme-color" content="#275643" />
 
-    <link rel="stylesheet" href="cardapio.css">
-</head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <!-- OU (inline) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%23275643"/><stop offset="1" stop-color="%232b6d56"/></linearGradient></defs><rect rx="12" ry="12" width="64" height="64" fill="url(%23g)" stroke="%23ea7d17" stroke-width="2"/><path d="M12 30c0-8 7-14 20-14s20 6 20 14" fill="%23ea7d17"/><g fill="%23F5F1E3" opacity=".9"><circle cx="24" cy="23" r="1.2"/><circle cx="32" cy="21.5" r="1.2"/><circle cx="40" cy="23" r="1.2"/><circle cx="28" cy="25.5" r="1.2"/><circle cx="36" cy="25.5" r="1.2"/></g><rect x="14" y="31" width="36" height="4" rx="2" fill="%23398c6f"/><path d="M14 36h36v5l-6-2.2L38 41l-6-2-6 2-6-2-6 2v-3z" fill="%23ffd100"/><rect x="12" y="41" width="40" height="6" rx="3" fill="%238a4e1f"/><rect x="14" y="48" width="36" height="6" rx="3" fill="%23ea7d17"/></svg>'
+    />
 
+    <!-- Bootstrap & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-
-<body>
-    <!-- Header -->
-    <header class="text-center py-5">
-        <div class="container">
-            <img src="imagens/home.jpg" alt="Steak Burger" class="img-fluid rounded-circle mb-3"
-                style="max-width: 200px; height: 150px;">
-            <h1 class="display-4">Steak Burger</h1>
-            <p class="lead">Os melhores hambúrgueres em um só lugar!</p>
-            <!-- preço -->
-            <!-- quantidade  -->
-
+    <!-- Estilos -->
+    <link rel="stylesheet" href="cardapio.css" />
+  </head>
+  <body
+    data-bs-spy="scroll"
+    data-bs-target="#navbarNav"
+    data-bs-offset="100"
+    tabindex="0"
+  >
+    <!-- Header/Hero -->
+    <header class="hero">
+      <div class="container text-center">
+        <div class="hero-image-wrap mx-auto">
+          <img
+            src="imagens/home.jpg"
+            alt="Imagem principal da Steak Burger"
+            class="hero-logo"
+            loading="lazy"
+          />
+          <span class="hero-ring" aria-hidden="true"></span>
         </div>
+        <h1 class="display-5 hero-title">Steak Burger</h1>
+        <p class="lead hero-subtitle">
+          Os melhores hambúrgueres em um só lugar!
+        </p>
+      </div>
+      <svg
+        class="hero-wave"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,64 C240,112 480,0 720,48 C960,96 1200,64 1440,16 L1440,120 L0,120 Z"
+        />
+      </svg>
     </header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Steak Burger</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#entradas">Entradas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#principais">Pratos Principais</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#bebidas">Bebidas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobremesas">Sobremesas</a></li>
-                </ul>
-            </div>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Steak Burger</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-label="Abrir navegação"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-lg-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#entradas">Entradas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#principais">Pratos Principais</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bebidas">Bebidas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sobremesas">Sobremesas</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="py-5">
-        <div class="container">
-            <!-- Entradas Section -->
-            <section id="entradas" >
-                <h2 class="text-center mb-4 fw-bolder">Entradas</h2>
-                <div class="row">
-                    <!-- Card 1 - Bruschetta -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/bruchettas.jpg" class="image-card" alt="Bruschetta">
-                                </div>
+    <!-- Superfície com degradê sutil (meio do site) -->
+    <main class="surface py-4">
+      <div class="container">
+        <!-- FILTROS -->
+        <section class="filters py-4">
+          <div class="container-fluid px-0">
+            <div class="row g-3 align-items-center">
+              <div class="col-12 col-lg-6">
+                <label for="searchInput" class="form-label mb-1"
+                  >Buscar item</label
+                >
+                <div class="input-group input-search shadow-sm">
+                  <span class="input-group-text"
+                    ><i class="fa-solid fa-magnifying-glass"></i
+                  ></span>
+                  <input
+                    id="searchInput"
+                    type="search"
+                    class="form-control"
+                    placeholder="Ex.: bacon, batata, milkshake…"
+                    aria-label="Buscar no cardápio"
+                  />
+                  <button
+                    id="clearSearch"
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    aria-label="Limpar busca"
+                  >
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                  <span class="me-1 fw-semibold text-nowrap">Categorias:</span>
 
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Bruschetta</h5>
-                                        <p class="card-text">Fatias de pão com tomate e manjericão.</p>
-                                        <span class=" fw-bold">R$ 15,00</span>
-                                        <br>
+                  <input
+                    class="btn-check"
+                    type="radio"
+                    name="cat"
+                    id="cat-todas"
+                    value="todas"
+                    checked
+                  />
+                  <label
+                    class="btn btn-chip icon-only"
+                    for="cat-todas"
+                    aria-label="Todas"
+                    title="Todas"
+                  >
+                    <i class="fa-solid fa-layer-group"></i>
+                  </label>
 
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalBruschetta">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <input
+                    class="btn-check"
+                    type="radio"
+                    name="cat"
+                    id="cat-entradas"
+                    value="entradas"
+                  />
+                  <label
+                    class="btn btn-chip icon-only"
+                    for="cat-entradas"
+                    aria-label="Entradas"
+                    title="Entradas"
+                  >
+                    <i class="fa-solid fa-utensils"></i>
+                  </label>
+
+                  <input
+                    class="btn-check"
+                    type="radio"
+                    name="cat"
+                    id="cat-principais"
+                    value="principais"
+                  />
+                  <label
+                    class="btn btn-chip icon-only"
+                    for="cat-principais"
+                    aria-label="Pratos Principais"
+                    title="Pratos Principais"
+                  >
+                    <i class="fa-solid fa-burger"></i>
+                  </label>
+
+                  <input
+                    class="btn-check"
+                    type="radio"
+                    name="cat"
+                    id="cat-bebidas"
+                    value="bebidas"
+                  />
+                  <label
+                    class="btn btn-chip icon-only"
+                    for="cat-bebidas"
+                    aria-label="Bebidas"
+                    title="Bebidas"
+                  >
+                    <i class="fa-solid fa-martini-glass-citrus"></i>
+                  </label>
+
+                  <input
+                    class="btn-check"
+                    type="radio"
+                    name="cat"
+                    id="cat-sobremesas"
+                    value="sobremesas"
+                  />
+                  <label
+                    class="btn btn-chip icon-only"
+                    for="cat-sobremesas"
+                    aria-label="Sobremesas"
+                    title="Sobremesas"
+                  >
+                    <i class="fa-solid fa-ice-cream"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              id="noResults"
+              class="alert alert-warning d-none mt-3 mb-0"
+              role="status"
+            >
+              Nenhum item encontrado. Tente termos diferentes ou limpe a busca.
+            </div>
+          </div>
+        </section>
+
+        <!-- ENTRADAS -->
+        <section id="entradas" class="mb-5">
+          <h2 class="section-title text-center">
+            Entradas
+            <span class="title-underline"></span>
+          </h2>
+          <div class="row g-4">
+            <!-- Bruschetta -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="entradas"
+              data-tags="pão,tomate,manjericão,veg,entrada,bruschetta"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/bruchettas.jpg"
+                      class="image-card"
+                      alt="Bruschetta com tomates e manjericão"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Bruschetta</h5>
+                        <span class="price-chip">R$ 15,00</span>
+                      </div>
+                      <p class="card-text">
+                        Fatias de pão com tomate e manjericão.
+                      </p>
+                      <div class="d-flex gap-2 flex-wrap">
+                        <span
+                          class="badge bg-success-subtle text-success border"
+                          >Novidade</span
+                        >
+                      </div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalBruschetta"
+                      >
+                        Ver mais detalhes
+                      </button>
                     </div>
-                    <!-- Modal Bruschetta -->
-                    <div class="modal fade" id="modalBruschetta" tabindex="-1" aria-labelledby="modalBruschettaLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalBruschettaLabel">Bruschetta</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/bruchettas.jpg" class="img-fluid rounded-start w-100"
-                                                    alt="Bruschetta" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                </div>
+              </article>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Fatias de pão com tomate e manjericão,
-                                                    temperadas com azeite de oliva.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>Serve 1 pessoa: <span class=" fw-bold">R$ 15,00</span></li>
-                                                    <li>Serve 2 pessoas: <span class=" fw-bold">R$ 25,00</span></li>
-                                                    <li>Serve 3 ou mais: <span class=" fw-bold">R$ 35,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
+            <!-- Modal Bruschetta -->
+            <div
+              class="modal fade"
+              id="modalBruschetta"
+              tabindex="-1"
+              aria-labelledby="modalBruschettaLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalBruschettaLabel"
+                    >
+                      Bruschetta
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/bruchettas.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Porção de bruschetta"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-2">
+                          <strong>Descrição:</strong> Fatias de pão com tomate e
+                          manjericão, finalizadas com azeite.
+                        </p>
+                        <p class="mb-1"><strong>Opções:</strong></p>
+                        <ul class="modal-list">
+                          <li>
+                            Serve 1 pessoa
+                            <span class="pill-price">R$ 15,00</span>
+                          </li>
+                          <li>
+                            Serve 2 pessoas
+                            <span class="pill-price">R$ 25,00</span>
+                          </li>
+                          <li>
+                            Serve 3 ou mais
+                            <span class="pill-price">R$ 35,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Ingredientes frescos • Vegetariano
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <!-- Card 2 Pastel -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/pastel.jpg" class="image-card" alt="Pastel">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Pastel</h5>
-                                        <p class="card-text">4 unidades de pastel.</p>
-                                        <span class=" fw-bold">R$ 45,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalPastel">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Pastel -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="entradas"
+              data-tags="pastel,massa,crocante,porção,entrada"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/pastel.jpg"
+                      class="image-card"
+                      alt="Porção de pastel crocante"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Pastel (4 un.)</h5>
+                        <span class="price-chip">R$ 45,00</span>
+                      </div>
+                      <p class="card-text">
+                        Massa crocante com recheios variados.
+                      </p>
+                      <div class="d-flex gap-2 flex-wrap">
+                        <span
+                          class="badge bg-warning-subtle text-warning border"
+                          >Promo</span
+                        >
+                      </div>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalPastel"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Pastel -->
+            <div
+              class="modal fade"
+              id="modalPastel"
+              tabindex="-1"
+              aria-labelledby="modalPastelLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalPastelLabel"
+                    >
+                      Pastel
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/pastel.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Pastéis variados"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-2">
+                          <strong>Descrição:</strong> 4 unidades de pastel com
+                          recheios variados, massa fininha e crocante.
+                        </p>
+                        <p class="mb-1"><strong>Opções:</strong></p>
+                        <ul class="modal-list">
+                          <li>
+                            4 unidades <span class="pill-price">R$ 45,00</span>
+                          </li>
+                          <li>
+                            8 unidades <span class="pill-price">R$ 85,00</span>
+                          </li>
+                          <li>
+                            12 unidades
+                            <span class="pill-price">R$ 120,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Serve bem para compartilhar
                         </div>
+                      </div>
                     </div>
-                    <!-- Modal Pastel -->
-                    <div class="modal fade" id="modalPastel" tabindex="-1" aria-labelledby="modalPastelLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalPastelLabel">Pastel</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/pastel.jpg" class="img-fluid rounded-start w-100" alt="Pastel"
-                                        style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> 4 unidades de pastel recheados com sabores variados e
-                                                    deliciosos, preparados com massa crocante e recheio fresco.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>4 unidades: <span class=" fw-bold">R$ 45,00</span></li>
-                                                    <li>8 unidades: <span class=" fw-bold">R$ 85,00</span></li>
-                                                    <li>12 unidades: <span class=" fw-bold">R$ 120,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
+            <!-- Batata Frita -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="entradas"
+              data-tags="batata,frita,porção,entrada"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/batatafrita.jpg"
+                      class="image-card"
+                      alt="Porção de batata frita"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Batata Frita</h5>
+                        <span class="price-chip">R$ 25,00</span>
+                      </div>
+                      <p class="card-text">Meia porção crocante e dourada.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalBatataFrita"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Batata -->
+            <div
+              class="modal fade"
+              id="modalBatataFrita"
+              tabindex="-1"
+              aria-labelledby="modalBatataFritaLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalBatataFritaLabel"
+                    >
+                      Batata Frita
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/batatafrita.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Batatas fritas crocantes"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Porção crocante e
+                          quentinha.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            Meia porção <span class="pill-price">R$ 25,00</span>
+                          </li>
+                          <li>
+                            Inteira <span class="pill-price">R$ 45,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">Acompanha maionese da casa</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frango Crispy -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="entradas"
+              data-tags="frango,crispy,empanado,porção,entrada"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/frangocrispy.jpg"
+                      class="image-card"
+                      alt="Porção de frango crispy"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Frango Crispy</h5>
+                        <span class="price-chip">R$ 25,00</span>
+                      </div>
+                      <p class="card-text">Empanado crocante, meia porção.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalFrangoCrispy"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Frango -->
+            <div
+              class="modal fade"
+              id="modalFrangoCrispy"
+              tabindex="-1"
+              aria-labelledby="modalFrangoCrispyLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalFrangoCrispyLabel"
+                    >
+                      Frango Crispy
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/frangocrispy.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Porção de frango empanado"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Frango empanado crocante.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            Meia porção <span class="pill-price">R$ 25,00</span>
+                          </li>
+                          <li>
+                            Inteira <span class="pill-price">R$ 45,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">Empanado na hora</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Costelinhas -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="entradas"
+              data-tags="costela,assadas,porção,entrada"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/costelinha.jpg"
+                      class="image-card"
+                      alt="Porção de costelinhas assadas"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Costelinhas (5 un.)</h5>
+                        <span class="price-chip">R$ 25,00</span>
+                      </div>
+                      <p class="card-text">
+                        Assadas e cobertas com molho especial.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCostelinhas"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Costelinhas -->
+            <div
+              class="modal fade"
+              id="modalCostelinhas"
+              tabindex="-1"
+              aria-labelledby="modalCostelinhasLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalCostelinhasLabel"
+                    >
+                      Costelinhas
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/costelinha.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Costelinhas ao molho"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> 5 unidades assadas no
+                          ponto com molho especial.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            5 unidades <span class="pill-price">R$ 25,00</span>
+                          </li>
+                          <li>
+                            10 unidades <span class="pill-price">R$ 45,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Defumação lenta • Molho da casa
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                    <!-- Card 3  Batata Frita -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalBatataFrita">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/batatafrita.jpg" class="image-card" alt="Batata Frita">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Batata Frita</h5>
-                                        <p class="card-text">Meia porção de batata frita.</p>
-                                        <span class=" fw-bold">R$ 25,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalBatataFrita">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+        <hr />
+
+        <!-- PRINCIPAIS -->
+        <section id="principais" class="mb-5">
+          <h2 class="section-title text-center">
+            Pratos Principais
+            <span class="title-underline"></span>
+          </h2>
+          <div class="row g-4">
+            <!-- Thor Burger -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="hamburguer,thor,carne,queijo,bacon,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/hamburger-thor.jpg"
+                      class="image-card"
+                      alt="Hambúrguer do Trovão com queijo derretido"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Hambúrguer do Trovão</h5>
+                        <span class="price-chip">R$ 45,00</span>
+                      </div>
+                      <p class="card-text">
+                        Carne suculenta, queijo derretido e molho especial.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalHamburguerThor"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Thor -->
+            <div
+              class="modal fade"
+              id="modalHamburguerThor"
+              tabindex="-1"
+              aria-labelledby="modalHamburguerThorLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalHamburguerThorLabel"
+                    >
+                      Hambúrguer do Trovão
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/hamburger-thor.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Hambúrguer temático do Thor"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Inspirado no Thor, com
+                          molho especial e muito sabor.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 45,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 85,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">Pão brioche • Queijo prato</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Aranha -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="hamburguer,aranha,queijo,carne,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/homem-aranha-burger.jpg"
+                      class="image-card"
+                      alt="Hambúrguer do Homem-Aranha"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Hambúrguer do Aranha</h5>
+                        <span class="price-chip">R$ 45,00</span>
+                      </div>
+                      <p class="card-text">
+                        Suculento com queijo e molho secreto.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalHamburguerAranha"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Aranha -->
+            <div
+              class="modal fade"
+              id="modalHamburguerAranha"
+              tabindex="-1"
+              aria-labelledby="modalHamburguerAranhaLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalHamburguerAranhaLabel"
+                    >
+                      Hambúrguer do Homem-Aranha
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/homem-aranha-burger.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Burger temático do Homem-Aranha"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Carne suculenta, queijo e
+                          molho secreto.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 45,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 85,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Pepino agridoce • Molho secreto
                         </div>
+                      </div>
                     </div>
-                    <!-- Modal Batata Frita -->
-                    <div class="modal fade" id="modalBatataFrita" tabindex="-1" aria-labelledby="modalBatataFritaLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalBatataFritaLabel">Batata Frita</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/batatafrita.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Batata Frita" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Porção de batata frita crocante e dourada, servida
-                                                    quentinha.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>Meia porção: <span class=" fw-bold">R$ 25,00</span></li>
-                                                    <li>Porção inteira: <span class=" fw-bold">R$ 45,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
+            <!-- Hulk -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="hamburguer,hulk,queijo,bacon,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/hulkburger.jpg"
+                      class="image-card"
+                      alt="Hulk Burger com onion e bacon"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Hulk Burger</h5>
+                        <span class="price-chip">R$ 45,00</span>
+                      </div>
+                      <p class="card-text">
+                        Gigante e saboroso pra ficar grandão.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalHulkBurger"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Hulk -->
+            <div
+              class="modal fade"
+              id="modalHulkBurger"
+              tabindex="-1"
+              aria-labelledby="modalHulkBurgerLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalHulkBurgerLabel"
+                    >
+                      Hulk Burger
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/hulkburger.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Hambúrguer do Hulk"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Combinação de carne,
+                          queijo, bacon e molho especial.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 45,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 85,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Onion rings • Bacon crocante
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <!-- Card 4 Frango Crispy (duplicado) -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalFrangoCrispy">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/frangocrispy.jpg" class="image-card" alt="Frango Crispy">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Frango Crispy</h5>
-                                        <p class="card-text">Meia porção de frango crispy.</p>
-                                        <span class=" fw-bold">R$ 25,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalFrangoCrispy">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Steak Bacon -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="bacon,carne,steak,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/steakbacon.jpg"
+                      class="image-card"
+                      alt="Steak Bacon com bacon crocante"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Steak Bacon</h5>
+                        <span class="price-chip">R$ 35,00</span>
+                      </div>
+                      <p class="card-text">
+                        Carne, bacon crocante e molho especial.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSteakBacon"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Steak Bacon -->
+            <div
+              class="modal fade"
+              id="modalSteakBacon"
+              tabindex="-1"
+              aria-labelledby="modalSteakBaconLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalSteakBaconLabel"
+                    >
+                      Steak Bacon
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/steakbacon.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Hambúrguer com bacon crocante"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Sabor clássico com bacon
+                          crocante.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 35,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 65,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Molho da casa • Pão brioche
                         </div>
+                      </div>
                     </div>
-                    <!-- Modal Frango Crispy -->
-                    <div class="modal fade" id="modalFrangoCrispy" tabindex="-1"
-                        aria-labelledby="modalFrangoCrispyLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalFrangoCrispyLabel">Frango Crispy</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/frangocrispy.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Frango Crispy" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Porção de frango empanado crocante, preparado de
-                                                    maneira especial.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>Meia porção: <span class=" fw-bold">R$ 25,00</span></li>
-                                                    <li>Porção inteira: <span class=" fw-bold">R$ 45,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
+            <!-- Steak Salad -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="salada,leve,vegano,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/steaksalad.jpg"
+                      class="image-card"
+                      alt="Steak Salad com folhas e legumes"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Steak Salad</h5>
+                        <span class="price-chip">R$ 35,00</span>
+                      </div>
+                      <p class="card-text">Opção leve e saborosa.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSteakSalad"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Steak Salad -->
+            <div
+              class="modal fade"
+              id="modalSteakSalad"
+              tabindex="-1"
+              aria-labelledby="modalSteakSaladLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalSteakSaladLabel"
+                    >
+                      Steak Salad
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/steaksalad.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Hambúrguer com salada"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Ideal para quem prefere
+                          algo mais leve.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 35,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 65,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Folhas frescas • Molho leve
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                    <!-- Card 5 Costelinhas (duplicado) -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalCostelinhas">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/costelinha.jpg" class="image-card" alt="Costelinhas">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Costelinhas</h5>
-                                        <p class="card-text">5 unidades de costelinhas.</p>
-                                        <span class=" fw-bold">R$ 25,00</span><br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalCostelinhas">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Steak Onion Rings -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="principais"
+              data-tags="onion,rings,crocante,principal,burger"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/steakonionrings.jpg"
+                      class="image-card"
+                      alt="Hambúrguer com onion rings crocantes"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Steak Onion Rings</h5>
+                        <span class="price-chip">R$ 40,00</span>
+                      </div>
+                      <p class="card-text">
+                        Hambúrguer com onion rings crocantes.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSteakOnionRings"
+                      >
+                        Ver mais detalhes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Modal Steak Onion Rings -->
+            <div
+              class="modal fade"
+              id="modalSteakOnionRings"
+              tabindex="-1"
+              aria-labelledby="modalSteakOnionRingsLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalSteakOnionRingsLabel"
+                    >
+                      Steak Onion Rings
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/steakonionrings.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Hambúrguer com onion rings"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Suculento com onion rings
+                          crocantes.
+                        </p>
+                        <ul class="modal-list">
+                          <li>
+                            1 carne <span class="pill-price">R$ 40,00</span>
+                          </li>
+                          <li>
+                            2 carnes <span class="pill-price">R$ 75,00</span>
+                          </li>
+                        </ul>
+                        <div class="modal-note">
+                          Onion crocante • Molho especial
                         </div>
+                      </div>
                     </div>
-                    <!-- Modal Costelinhas -->
-                    <div class="modal fade" id="modalCostelinhas" tabindex="-1" aria-labelledby="modalCostelinhasLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalCostelinhasLabel">Costelinhas</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/costelinha.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Costelinhas" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> 5 unidades de costelinhas, assadas e cobertas com
-                                                    molho especial.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>5 unidades: <span class=" fw-bold">R$ 25,00</span></li>
-                                                    <li>10 unidades: <span class=" fw-bold">R$ 45,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
+        <hr />
+
+        <!-- BEBIDAS -->
+        <section id="bebidas" class="mb-5">
+          <h2 class="section-title text-center">
+            Bebidas
+            <span class="title-underline"></span>
+          </h2>
+          <div class="row g-4">
+            <!-- Coca -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="bebidas"
+              data-tags="refrigerante,coca,cola,bebida"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/coca.jpg"
+                      class="image-card"
+                      alt="Coca-Cola lata 300ml"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Coca-Cola</h5>
+                        <span class="price-chip">R$ 15,00</span>
+                      </div>
+                      <p class="card-text">300ml geladinha.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCocaCola"
+                      >
+                        Ver mais detalhes
+                      </button>
                     </div>
-            </section>
+                  </div>
+                </div>
+              </article>
+            </div>
 
-            <hr>
-
-            <!-- Adicione mais rows e cards aqui -->
-
-            <section id="principais">
-                <h2 class="text-center mb-4 fw-bolder">Principais</h2>
-                <div class="row">
-                    <!-- Card 1 - Hambúrguer do trovão -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalHamburguerThor">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/hamburger-thor.jpg" class="image-card" alt="Hambúrguer do Trovão">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hambúrguer do Trovão</h5>
-                                        <p class="card-text">Incrível hambúrguer do Thor.</p>
-                                        <span class=" fw-bold">R$ 45,00</span>
-
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalHamburguerThor">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Modal Coca -->
+            <div
+              class="modal fade"
+              id="modalCocaCola"
+              tabindex="-1"
+              aria-labelledby="modalCocaColaLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalCocaColaLabel"
+                    >
+                      Coca-Cola
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/coca.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Coca-Cola gelada"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> A companheira perfeita do
+                          seu burger.
+                        </p>
+                        <p class="mb-0">
+                          <strong>Preço:</strong>
+                          <span class="pill-price">R$ 15,00</span>
+                        </p>
+                      </div>
                     </div>
-                    <!-- Modal Hambúrguer do Trovão -->
-                    <div class="modal fade" id="modalHamburguerThor" tabindex="-1"
-                        aria-labelledby="modalHamburguerThorLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalHamburguerThorLabel">Hambúrguer do
-                                        Trovão</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/hamburger-thor.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Hambúrguer do Trovão" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Incrível hambúrguer inspirado no Thor, com carne
-                                                    suculenta, queijo derretido e molho especial.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class=" fw-bold">R$ 45,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 85,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Suco -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="bebidas"
+              data-tags="suco,fruta,500ml,bebida,natural"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/suco.jpg"
+                      class="image-card"
+                      alt="Copo de suco natural 500ml"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Sucos</h5>
+                        <span class="price-chip">R$ 12,00</span>
+                      </div>
+                      <p class="card-text">500ml bem refrescante.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSuco"
+                      >
+                        Ver mais detalhes
+                      </button>
                     </div>
+                  </div>
+                </div>
+              </article>
+            </div>
 
-                    <!-- Card 2 - Hambúrguer do Homem-Aranha -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalHamburguerAranha">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/homem-aranha-burger.jpg" class="image-card" alt="Bruschetta">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hambúrguer do Homem-Aranha</h5>
-                                        <p class="card-text">Incrivel hamburguer homem aranha</p>
-                                        <span class=" fw-bold">R$ 45,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalHamburguerAranha">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Modal Suco -->
+            <div
+              class="modal fade"
+              id="modalSuco"
+              tabindex="-1"
+              aria-labelledby="modalSucoLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalSucoLabel"
+                    >
+                      Sucos
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/suco.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Suco natural"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Feito com frutas
+                          selecionadas.
+                        </p>
+                        <p class="mb-0">
+                          <strong>Preço:</strong>
+                          <span class="pill-price">R$ 12,00</span>
+                        </p>
+                      </div>
                     </div>
-                    <!-- Modal Hambúrguer do Homem-Aranha -->
-                    <div class="modal fade" id="modalHamburguerAranha" tabindex="-1"
-                        aria-labelledby="modalHamburguerAranhaLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalHamburguerAranhaLabel">Hambúrguer do
-                                        Homem-Aranha</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/homem-aranha-burger.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Hambúrguer do Homem-Aranha" style="width: 100%; height: 350px;">
-                                            </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Hambúrguer incrível do Homem-Aranha, com carne
-                                                    suculenta, queijo e molho secreto.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class=" fw-bold">R$ 45,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 85,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Caipirinha -->
+            <div
+              class="col-lg-6 col-md-12 d-flex justify-content-center menu-item"
+              data-category="bebidas"
+              data-tags="drinks,caipirinha,500ml,bebida,limão"
+            >
+              <article class="card card-menu h-100">
+                <div class="row g-0">
+                  <div class="col-4 d-flex align-items-center">
+                    <img
+                      src="imagens/caipirinha.jpg"
+                      class="image-card"
+                      alt="Caipirinha 500ml com gelo e limão"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-start"
+                      >
+                        <h5 class="card-title mb-1">Caipirinha</h5>
+                        <span class="price-chip">R$ 18,00</span>
+                      </div>
+                      <p class="card-text">500ml na medida certa.</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCaipirinha"
+                      >
+                        Ver mais detalhes
+                      </button>
                     </div>
+                  </div>
+                </div>
+              </article>
+            </div>
 
-                    <!-- Card 3 - Hulk Burger -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalHulkBurger">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/hulkburger.jpg" class="image-card" alt="Hulk Burger">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hulk Burger</h5>
-                                        <p class="card-text">Hambúrguer do Hulk para ficar grandão.</p>
-                                        <span class=" fw-bold">R$ 45,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalHulkBurger">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Modal Caipirinha -->
+            <div
+              class="modal fade"
+              id="modalCaipirinha"
+              tabindex="-1"
+              aria-labelledby="modalCaipirinhaLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content modal-elevated">
+                  <div class="modal-header">
+                    <h5
+                      class="modal-title w-100 text-center fw-bold"
+                      id="modalCaipirinhaLabel"
+                    >
+                      Caipirinha
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Fechar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <div class="col-md-6">
+                        <img
+                          src="imagens/caipirinha.jpg"
+                          class="img-fluid rounded-3 w-100"
+                          alt="Caipirinha clássica"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Descrição:</strong> Clássica e refrescante.
+                        </p>
+                        <p class="mb-0">
+                          <strong>Preço:</strong>
+                          <span class="pill-price">R$ 18,00</span>
+                        </p>
+                      </div>
                     </div>
-                    <!-- Modal Hulk Burger -->
-                    <div class="modal fade" id="modalHulkBurger" tabindex="-1" aria-labelledby="modalHulkBurgerLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalHulkBurgerLabel">Hulk Burger</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/hulkburger.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Hulk Burger" style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Hambúrguer gigante do Hulk, ideal para quem quer
-                                                    ficar grandão! Com uma combinação de carne, queijo, bacon e molho especial.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class=" fw-bold">R$ 45,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 85,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 - Steak Bacon -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalSteakBacon">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/steakbacon.jpg" class="image-card" alt="Bruschetta">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Steak Bacon</h5>
-                                        <p class="card-text">Delicioso hamburguer de bacon.</p>
-                                        <span class=" fw-bold">R$ 35,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalSteakBacon">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Steak Bacon -->
-                    <div class="modal fade" id="modalSteakBacon" tabindex="-1" aria-labelledby="modalSteakBaconLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalSteakBaconLabel">Steak Bacon</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/steakbacon.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Steak Bacon" style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Hambúrguer saboroso com carne, bacon crocante e molho
-                                                    especial.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class=" fw-bold">R$ 35,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 65,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 - Steak Salad -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalSteakSalad">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/steaksalad.jpg" class="image-card" alt="Cheddar Bacon">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Steak Salad</h5>
-                                        <p class="card-text">Hambúrguer para opções mais veganas.</p>
-                                        <span class=" fw-bold">R$ 35,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalSteakSalad">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Steak Salad -->
-                    <div class="modal fade" id="modalSteakSalad" tabindex="-1" aria-labelledby="modalSteakSaladLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalSteakSaladLabel">Steak Salad</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/steaksalad.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Steak Salad" style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Hambúrguer saboroso e leve, ideal para quem busca uma
-                                                    opção mais saudável e vegana.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class="fw-bold">R$ 35,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 65,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 - Steak Onion rings -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalSteakOnionRings">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/steakonionrings.jpg" class="image-card" alt="Steak Onin rings">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Steak Onion rings</h5>
-                                        <p class="card-text">Hambúrguer com onion rings.</p>
-                                        <span class=" fw-bold">R$ 40,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalSteakOnionRings">
-                                            Ver mais detalhes
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Steak Onion rings -->
-                    <div class="modal fade" id="modalSteakOnionRings" tabindex="-1"
-                        aria-labelledby="modalSteakOnionRingsLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalSteakOnionRingsLabel">Steak Onion Rings
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/steakonionrings.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Steak Onion Rings" style="width: 100%; height: 400px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Hambúrguer suculento com onion rings crocantes, uma
-                                                    mistura de sabor incrível.</p>
-                                                <p><strong>Opções de tamanho:</strong></p>
-                                                <ul>
-                                                    <li>1 carne: <span class=" fw-bold">R$ 40,00</span></li>
-                                                    <li>2 carnes: <span class=" fw-bold">R$ 75,00</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </section>
-            <hr>
-            <!-- Adicione mais rows e cards aqui -->
-            <section id="bebidas">
-                <h2 class="text-center mb-4 fw-bolder">Bebidas</h2>
-                <div class="row">
-                    <!-- Card 1 - Coca-cola -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalCocaCola">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/coca.jpg" class="image-card" alt="coca-cola">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Coca-Cola</h5>
-                                        <p class="card-text">Coca-Cola 300ml.</p>
-                                        <span class=" fw-bold">R$ 15,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalCocaCola">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Coca Cola -->
-                    <div class="modal fade" id="modalCocaCola" tabindex="-1" aria-labelledby="modalCocaColaLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalCocaColaLabel">Coca-Cola</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/coca.jpg" class="img-fluid rounded-start w-100" alt="Coca Cola"
-                                        style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Coca cola 300ml, a bebida que acompanha qualquer
-                                                    refeição.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 15,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 Sucos-->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalSuco">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/suco.jpg" class="image-card" alt="Suco">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sucos</h5>
-                                        <p class="card-text">Sucos 500ml.</p>
-                                        <span class=" fw-bold">R$ 12,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalSuco">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Suco -->
-                    <div class="modal fade" id="modalSuco" tabindex="-1" aria-labelledby="modalSucoLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalSucoLabel">Sucos</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/suco.jpg" class="img-fluid rounded-start w-100" alt="Suco"
-                                        style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Suco 500ml, saboroso e refrescante para todos os
-                                                    momentos.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 12,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 Caipirinha-->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalCaipirinha">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/caipirinha.jpg" class="image-card" alt="Caipirinha">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Caipirinha</h5>
-                                        <p class="card-text">Caipirinha 500ml.</p>
-                                        <span class=" fw-bold">R$ 18,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalCaipirinha">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Caipirinha -->
-                    <div class="modal fade" id="modalCaipirinha" tabindex="-1" aria-labelledby="modalCaipirinhaLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalCaipirinhaLabel">Caipirinha</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/caipirinha.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Caipirinha" style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Caipirinha 500ml, uma bebida clássica para refrescar
-                                                    seus momentos.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 18,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-
-            <hr>
-
-            <section id="sobremesas">
-                <h2 class="text-center mb-4 fw-bolder">Sobremesas</h2>
-                <div class="row">
-                    <!-- Card 1 Brownie-->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalBrownie">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/brownie.jpg" class="image-card" alt="Brownie">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Brownie</h5>
-                                        <p class="card-text">Delicioso brownie de chocolate.</p>
-                                        <span class=" fw-bold">R$ 12,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalBrownie">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Brownie -->
-                    <div class="modal fade" id="modalBrownie" tabindex="-1" aria-labelledby="modalBrownieLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalBrownieLabel">Detalhes do Brownie</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/brownie.jpg" class="img-fluid rounded-start w-100" alt="Brownie"
-                                        style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Brownie de chocolate macio e saboroso, perfeito para
-                                                    sobremesa.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 12,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 Milkshake -->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalMilkshake">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/milkshake.jpg" class="image-card" alt="Milkshake">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Milkshake</h5>
-                                        <p class="card-text">Milkshake cremoso, disponível em vários sabores.</p>
-                                        <span class=" fw-bold">R$ 20,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalMilkshake">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Milkshake -->
-                    <div class="modal fade" id="modalMilkshake" tabindex="-1" aria-labelledby="modalMilkshakeLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalMilkshakeLabel">Detalhes do Milkshake</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/milkshake.jpg" class="img-fluid rounded-start w-100"
-                                        alt="Milkshake" style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Milkshake cremoso, feito com sorvete de alta
-                                                    qualidade e coberturas especiais.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 20,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 sorvete-->
-                    <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
-                        <div class="card" data-bs-toggle="modal" data-bs-target="#modalSorvete">
-                            <div class="row g-0">
-                                <!-- Imagem -->
-                                <div class="col-4 d-flex align-items-center">
-                                    <img src="imagens/sorvete.jpg" class="image-card" alt="Sorvete">
-                                </div>
-                                <!-- Conteúdo -->
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Sorvete</h5>
-                                        <p class="card-text">Delicioso sorvete artesanal.</p>
-                                        <span class=" fw-bold">R$ 18,00</span>
-                                        <br>
-                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalSorvete">Ver mais detalhes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Sorvete -->
-                    <div class="modal fade" id="modalSorvete" tabindex="-1" aria-labelledby="modalSorveteLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <!-- Cabeçalho -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title fw-bold  text-center w-100" id="modalSorveteLabel">Detalhes do Sorvete</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <!-- Corpo -->
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="imagens/sorvete.jpg" class="img-fluid rounded-start w-100" alt="Sorvete"
-                                        style="width: 100%; height: 350px;">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <p><strong>Descrição:</strong> Sorvete artesanal cremoso, disponível em diversos
-                                                    sabores.</p>
-                                                <p><strong>Preço:</strong> <span class=" fw-bold">R$ 18,00</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Rodapé -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-
-        </div>
+                  </div>
+                  <div class="modal-footer modal-footer-soft">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        
-        <div class="d-flex justify-content-center align-items-center">
-            <ul class="list-unstyled d-flex">
-                <li class="me-3">
-                    <a href="https://www.instagram.com/forgedevapps/" target="_blank">
-                        <i class="fab fa-instagram" style="font-size: 40px; color:white;"></i>
-                    </a>
-                </li>
-                <li class="me-3">
-                    <a href="https://www.facebook.com/seu_usuario/" target="_blank">
-                        <i class="fab fa-facebook" style="font-size: 40px; color: white;"></i>
-                    </a>
-                </li>
-            </ul>
+      <div class="container footer-top">
+        <!-- Esquerda: Social -->
+        <div class="footer-col footer-left">
+          <h6 class="footer-heading">Siga a Steak Burger</h6>
+          <ul class="list-unstyled d-flex gap-3 mb-3">
+            <li>
+              <a
+                href="https://instagram.com/steakburger"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                class="social"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://facebook.com/steakburger"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                class="social"
+                ><i class="fab fa-facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://tiktok.com/@steakburger"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok"
+                class="social"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </li>
+          </ul>
         </div>
-        
-        
-        
 
-        <p>© 2025 Stack Burger - Todos os direitos reservados</p>
-     
-      <div id="qrcode"></div> 
+        <!-- Centro: Endereço + CNPJ (fakes) -->
+        <div class="footer-col footer-mid">
+          <h6 class="footer-heading">Onde estamos</h6>
+          <address class="m-0">
+            Rua Fictícia, 123 – Centro<br />
+            Rio de Janeiro – RJ • CEP 20000-000<br />
+            <span class="opacity-75">CNPJ: 12.345.678/0001-90</span>
+          </address>
+        </div>
+
+        <!-- Direita: QR Code -->
+        <div class="footer-col footer-right">
+          <div class="qr-card">
+            <div id="qrcode" aria-label="QRCode do site"></div>
+            <div class="qr-caption">
+              <i class="fa-solid fa-qrcode me-2"></i>
+              <span>Aponte a câmera e <strong>acesse o cardápio</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha/Quebra + Direitos -->
+      <div class="container">
+        <hr class="footer-sep" />
+        <p class="m-0 text-center copyright">
+          © <span id="year"></span> Steak Burger — Todos os direitos reservados
+        </p>
+      </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="cardapio.js"></script>
-</body>
+    <!-- Voltar ao topo -->
+    <button
+      id="backToTop"
+      class="btn btn-primary back-to-top"
+      aria-label="Voltar ao topo"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="cardapio.js"></script>
+  </body>
 </html>
