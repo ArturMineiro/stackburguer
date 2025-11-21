@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Ano no rodapé — o footer é carregado dinamicamente, então checar existência
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
 
   // Back to top
   const backBtn = document.getElementById("backToTop");
@@ -93,19 +89,9 @@ function iniciarFiltros() {
 //  CARREGAR CARDÁPIO VIA JSON
 // ---------------------------
 
-  function gerarQRCode() {
-    new QRCode(document.getElementById("qrcode"), {
-      text: "https://steakburger.forgedevapps.com/",
-      width: 100,
-      height: 100,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  }
+
 
   // Gera ao carregar página
-  document.addEventListener("DOMContentLoaded", gerarQRCode);
 
 async function carregarCardapio() {
   const resposta = await fetch("cardapio.json");
@@ -210,7 +196,10 @@ fetch("footer.html")
     document.getElementById("footer-container").innerHTML = html;
 
     // Atualiza ano automático
-    document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
     // Gera o QR Code
     const qr = document.getElementById("qrcode");
@@ -223,3 +212,4 @@ fetch("footer.html")
       });
     }
   });
+  document.addEventListener("DOMContentLoaded", gerarQRCode);
