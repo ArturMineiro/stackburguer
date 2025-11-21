@@ -1,0 +1,246 @@
+{
+  "entradas": [
+    {
+      "id": "bruschetta",
+      "nome": "Bruschetta",
+      "preco": "R$ 15,00",
+      "imagem": "imagens/bruchettas.jpg",
+      "descricao": "Fatias de pão com tomate e manjericão.",
+      "tags": "pão,tomate,manjericão,veg,entrada,bruschetta",
+      "badges": [
+        { "texto": "Novidade", "cor": "success" }
+      ],
+      "opcoes": [
+        { "titulo": "Serve 1 pessoa", "preco": "R$ 15,00" },
+        { "titulo": "Serve 2 pessoas", "preco": "R$ 25,00" },
+        { "titulo": "Serve 3 ou mais", "preco": "R$ 35,00" }
+      ],
+      "nota": "Ingredientes frescos • Vegetariano"
+    },
+    {
+      "id": "pastel",
+      "nome": "Pastel (4 un.)",
+      "preco": "R$ 45,00",
+      "imagem": "imagens/pastel.jpg",
+      "descricao": "Massa crocante com recheios variados.",
+      "tags": "pastel,massa,crocante,porção,entrada",
+      "badges": [
+        { "texto": "Promo", "cor": "warning" }
+      ],
+      "opcoes": [
+        { "titulo": "4 unidades", "preco": "R$ 45,00" },
+        { "titulo": "8 unidades", "preco": "R$ 85,00" },
+        { "titulo": "12 unidades", "preco": "R$ 120,00" }
+      ],
+      "nota": "Serve bem para compartilhar"
+    },
+    {
+      "id": "batata-frita",
+      "nome": "Batata Frita",
+      "preco": "R$ 25,00",
+      "imagem": "imagens/batatafrita.jpg",
+      "descricao": "Meia porção crocante e dourada.",
+      "tags": "batata,frita,porção,entrada",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "Meia porção", "preco": "R$ 25,00" },
+        { "titulo": "Inteira", "preco": "R$ 45,00" }
+      ],
+      "nota": "Acompanha maionese da casa"
+    },
+    {
+      "id": "frango-crispy",
+      "nome": "Frango Crispy",
+      "preco": "R$ 25,00",
+      "imagem": "imagens/frangocrispy.jpg",
+      "descricao": "Empanado crocante, meia porção.",
+      "tags": "frango,crispy,empanado,porção,entrada",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "Meia porção", "preco": "R$ 25,00" },
+        { "titulo": "Inteira", "preco": "R$ 45,00" }
+      ],
+      "nota": "Empanado na hora"
+    },
+    {
+      "id": "costelinhas",
+      "nome": "Costelinhas (5 un.)",
+      "preco": "R$ 25,00",
+      "imagem": "imagens/costelinha.jpg",
+      "descricao": "Assadas e cobertas com molho especial.",
+      "tags": "costela,assadas,porção,entrada",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "5 unidades", "preco": "R$ 25,00" },
+        { "titulo": "10 unidades", "preco": "R$ 45,00" }
+      ],
+      "nota": "Defumação lenta • Molho da casa"
+    }
+  ],
+
+"principais": [
+    {
+      "id": "hamburguer-thor",
+      "nome": "Hambúrguer do Trovão",
+      "preco": "R$ 45,00",
+      "imagem": "imagens/hamburger-thor.jpg",
+      "descricao": "Carne suculenta, queijo derretido e molho especial.",
+      "tags": "hamburguer,thor,carne,queijo,bacon,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 45,00" },
+        { "titulo": "2 carnes", "preco": "R$ 85,00" }
+      ],
+      "nota": "Pão brioche • Queijo prato"
+    },
+
+    {
+      "id": "hamburguer-aranha",
+      "nome": "Hambúrguer do Aranha",
+      "preco": "R$ 45,00",
+      "imagem": "imagens/homem-aranha-burger.jpg",
+      "descricao": "Suculento com queijo e molho secreto.",
+      "tags": "hamburguer,aranha,queijo,carne,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 45,00" },
+        { "titulo": "2 carnes", "preco": "R$ 85,00" }
+      ],
+      "nota": "Pepino agridoce • Molho secreto"
+    },
+
+    {
+      "id": "hulk-burger",
+      "nome": "Hulk Burger",
+      "preco": "R$ 45,00",
+      "imagem": "imagens/hulkburger.jpg",
+      "descricao": "Gigante e saboroso pra ficar grandão.",
+      "tags": "hamburguer,hulk,queijo,bacon,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 45,00" },
+        { "titulo": "2 carnes", "preco": "R$ 85,00" }
+      ],
+      "nota": "Onion rings • Bacon crocante"
+    },
+
+    {
+      "id": "steak-bacon",
+      "nome": "Steak Bacon",
+      "preco": "R$ 35,00",
+      "imagem": "imagens/steakbacon.jpg",
+      "descricao": "Carne, bacon crocante e molho especial.",
+      "tags": "bacon,carne,steak,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 35,00" },
+        { "titulo": "2 carnes", "preco": "R$ 65,00" }
+      ],
+      "nota": "Molho da casa • Pão brioche"
+    },
+
+    {
+      "id": "steak-salad",
+      "nome": "Steak Salad",
+      "preco": "R$ 35,00",
+      "imagem": "imagens/steaksalad.jpg",
+      "descricao": "Opção leve e saborosa.",
+      "tags": "salada,leve,vegano,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 35,00" },
+        { "titulo": "2 carnes", "preco": "R$ 65,00" }
+      ],
+      "nota": "Folhas frescas • Molho leve"
+    },
+
+    {
+      "id": "steak-onion-rings",
+      "nome": "Steak Onion Rings",
+      "preco": "R$ 40,00",
+      "imagem": "imagens/steakonionrings.jpg",
+      "descricao": "Hambúrguer com onion rings crocantes.",
+      "tags": "onion,rings,crocante,principal,burger",
+      "badges": [],
+      "opcoes": [
+        { "titulo": "1 carne", "preco": "R$ 40,00" },
+        { "titulo": "2 carnes", "preco": "R$ 75,00" }
+      ],
+      "nota": "Onion crocante • Molho especial"
+    }
+  ],
+  "bebidas": [
+        {
+            "id": "refrigerante",
+            "nome": "Coca-Cola",
+            "preco": "R$ 15,00",
+            "imagem": "imagens/coca.jpg",
+            "descricao": "Refrigerante Coca-Cola geladinha",
+            "tags": "refrigerante,coca-cola,gelada,bebida",
+            "badges": [],
+            "opcoes": [
+                { "titulo": "Lata 350ml", "preco": "R$ 15,00" },
+                { "titulo": "Garrafa 600ml", "preco": "R$ 20,00" }
+            ],
+            "nota": "Geladinha e refrescante"
+        },
+        {
+            "id": "suco-laranja",
+            "nome": "Suco de Laranja",
+            "preco": "R$ 10,00",
+            "imagem": "imagens/suco.jpg",
+            "descricao": "Suco natural de laranja espremida na hora.",
+            "tags": "suco,laranja,natural,refrescante,bebida",
+            "badges": [],
+            "opcoes": [
+                { "titulo": "Copo 300ml", "preco": "R$ 10,00" },
+                { "titulo": "Copo 500ml", "preco": "R$ 15,00" }
+            ],
+            "nota": "Feito com laranjas frescas"
+        },
+        {
+            "id": "Caipirinha",
+            "nome": "Caipirinha",
+            "preco": "R$ 18,00",
+            "imagem": "imagens/caipirinha.jpg",
+            "descricao": "Bebida típica brasileira feita com cachaça, limão e açúcar.",
+            "tags": "caipirinha,cachaça,limão,açúcar,bebida",
+            "badges": [],
+            "opcoes": [
+                { "titulo": "500ml", "preco": "R$ 18,00" }
+              
+            ],
+            "nota": "Beba com moderação!"
+        }
+        
+  ],
+  "sobremesas": [
+    {
+        "id": "brownie",
+        "nome": "Brownie com Sorvete",
+        "preco": "R$ 20,00",
+        "imagem": "imagens/brownie.jpg",
+        "descricao": "Brownie quente servido com sorvete de baunilha.",
+        "tags": "brownie,sorvete,baunilha,sobremesa",
+        "badges": [],
+        "opcoes": [
+            { "titulo": "1 porção", "preco": "R$ 20,00" }
+        ],
+        "nota": "Delicioso e cremoso"
+    },
+    {
+        "id": "milkshake",
+        "nome": "Milkshake de Chocolate",
+        "preco": "R$ 15,00",
+        "imagem": "imagens/milkshake.jpg",
+        "descricao": "Milkshake cremoso feito com sorvete de chocolate.",
+        "tags": "milkshake,chocolate,sorvete,sobremesa",
+        "badges": [],
+        "opcoes": [
+            { "titulo": "300ml", "preco": "R$ 15,00" },
+            { "titulo": "500ml", "preco": "R$ 20,00" }
+        ],
+        "nota": "Cremoso e delicioso"
+    }
+  ]
+}
