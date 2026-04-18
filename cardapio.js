@@ -173,7 +173,10 @@ async function carregarCardapio() {
                   </div>
                 </div>
               </div>
-
+<button class="btn btn-success mt-3 w-100"
+  onclick='abrirModalPedido(${JSON.stringify(item.nome)}, ${JSON.stringify(item.preco)})'">
+  <i class="fa-brands fa-whatsapp"></i> Pedir pelo WhatsApp
+</button>
               <div class="modal-footer modal-footer-soft">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
               </div>
@@ -188,6 +191,60 @@ async function carregarCardapio() {
   applyFilters();
 }
 
+let produtoAtual = {};
+let modalPedido;
+
+function abrirModalPedido(nome, precoString) {
+  const preco = formatarPrecoParaNumero(precoString);
+
+  produtoAtual = { nome, preco };
+
+  document.getElementById("pedidoNome").innerText = nome;
+  document.getElementById("pedidoPreco").innerText = precoString;
+  document.getElementById("pedidoQtd").value = 1;
+  document.getElementById("pedidoObs").value = "";
+
+  modalPedido = new bootstrap.Modal(document.getElementById("modalPedido"));
+  modalPedido.show();
+}
+
+function alterarQtd(valor) {
+  const input = document.getElementById("pedidoQtd");
+  let qtd = parseInt(input.value) || 1;
+
+  qtd += valor;
+  if (qtd < 1) qtd = 1;
+
+  input.value = qtd;
+}
+function enviarPedidoWhatsapp() {
+  const numero = "5521981872757";
+
+  const qtd = parseInt(document.getElementById("pedidoQtd").value);
+  const obs = document.getElementById("pedidoObs").value || "Nenhuma";
+
+  const total = (produtoAtual.preco * qtd).toFixed(2);
+
+  const mensagem = `
+🍔 Pedido - Steak Burger
+
+📌 Produto: ${produtoAtual.nome}
+🔢 Quantidade: ${qtd}
+💰 Valor unitário: R$ ${produtoAtual.preco.toFixed(2)}
+💵 Total: R$ ${total}
+
+📝 Observações: ${obs}
+`;
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem.trim())}`;
+
+  window.open(url, "_blank");
+}
+function formatarPrecoParaNumero(preco) {
+  return parseFloat(
+    preco.replace("R$", "").replace(",", ".").trim()
+  );
+}
 //footer.js
 // Carrega o footer
 fetch("footer.html")
