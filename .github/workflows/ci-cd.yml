@@ -180,6 +180,9 @@ jobs:
             echo "Pasta do cardápio confirmada (version.json)."
           elif printf '%s\n' "$files" | grep -qxE 'cardapio\.(json|css|js)'; then
             echo "Pasta do cardápio antigo confirmada (cardapio.*)."
+          elif printf '%s\n' "$files" | grep -qx 'public_html'; then
+            echo "::error::Essa conta FTP abre a pasta do domínio, e o site fica dentro de public_html. Use a variável FTP_SERVER_DIR=public_html/"
+            exit 1
           else
             echo "::error::A pasta $FTP_SERVER_DIR não parece ser a do cardápio. Arquivos encontrados:"
             printf '%s\n' "$files" | head -20
