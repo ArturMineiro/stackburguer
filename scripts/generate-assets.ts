@@ -7,7 +7,7 @@
  * Requer o Chromium do Playwright: npx playwright install chromium
  */
 import { createServer, type Server } from 'node:http';
-import { readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
 import { chromium, type Browser } from '@playwright/test';
 import { DOWNLOADS, tableCount } from '../src/config/site.ts';
@@ -105,6 +105,36 @@ async function main() {
     server.close();
   }
   await rm(join(DIST, 'imprimir'), { recursive: true, force: true });
+  await removeOrphanAssets();
+}
+
+/** Lista recursiva de arquivos de uma pasta. */
+async function walk(dir: string): Promise<string[]> {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const nested = await Promise.all(
+    entries.map((entry) => (entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)])),
+  );
+  return nested.flat();
+}
+
+/**
+ * Remove de dist/_astro as imagens que só as páginas de impressão usavam (já
+ * embutidas nos PDFs): o site publicado fica menor e o deploy, mais rápido.
+ */
+async function removeOrphanAssets() {
+  const files = await walk(DIST);
+  const referencing = files.filter((file) => /\.(html|css|js|json|webmanifest|xml)$/.test(file));
+  const used = new Set<string>();
+  for (const file of referencing) {
+    for (const match of (await readFile(file, 'utf8')).matchAll(/\/_astro\/[^"'()\s,]+/g)) {
+      used.add(resolve(DIST, `.${match[0]}`));
+    }
+  }
+  const orphans = files.filter(
+    (file) => file.startsWith(join(DIST, '_astro') + sep) && /\.(jpe?g|png|webp|avif)$/.test(file) && !used.has(file),
+  );
+  await Promise.all(orphans.map((file) => rm(file)));
+  if (orphans.length > 0) console.log(`✓ ${orphans.length} imagens usadas só nos PDFs removidas do site`);
 }
 
 main().catch((error: unknown) => {

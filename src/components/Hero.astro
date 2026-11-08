@@ -16,7 +16,8 @@ const total = countItems(cardapio);
     <Picture
       src={heroImage}
       alt=""
-      formats={['avif', 'webp']}
+      formats={['avif']}
+      fallbackFormat="webp"
       widths={widthsFor(heroImage, [640, 960, 1280, 1920, 2560])}
       sizes={SIZES.hero}
       loading="eager"

@@ -23,7 +23,8 @@ const titleId = `dlg-${item.id}-titulo`;
       <Picture
         src={photo}
         alt={`Foto ilustrativa: ${item.nome}`}
-        formats={['avif', 'webp']}
+        formats={['avif']}
+        fallbackFormat="webp"
         widths={widthsFor(photo, [480, 800, 1200])}
         sizes={SIZES.dialog}
         loading="lazy"

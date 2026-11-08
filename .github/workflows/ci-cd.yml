@@ -127,7 +127,7 @@ jobs:
     needs: build
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45 # o primeiro envio sobe tudo; os próximos, só o que mudou
     environment:
       name: production
       url: ${{ vars.SITE_URL || 'https://steakburger.forgedevapps.com' }}
@@ -204,9 +204,23 @@ jobs:
             live="$(curl -fsS -H 'Cache-Control: no-cache' "${SITE_URL}/version.json?v=${GITHUB_SHA}-${attempt}" | jq -r .commit || true)"
             if [ "$live" = "$GITHUB_SHA" ]; then
               echo "✓ Versão ${GITHUB_SHA::7} publicada em ${SITE_URL}"
-              exit 0
+              break
             fi
             sleep 6
           done
-          echo "::error::A versão nova não apareceu em ${SITE_URL}/version.json (no ar: ${live:-nada})."
-          exit 1
+          if [ "$live" != "$GITHUB_SHA" ]; then
+            echo "::error::A versão nova não apareceu em ${SITE_URL}/version.json (no ar: ${live:-nada})."
+            exit 1
+          fi
+
+          # Página inicial e PDF respondem sem redirecionamento em loop
+          for path in / /cardapio-steak-burger.pdf; do
+            code="$(curl -s -o /dev/null -w '%{http_code}' --max-redirs 0 "${SITE_URL}${path}")"
+            [ "$code" = 200 ] || { echo "::error::${SITE_URL}${path} respondeu ${code} (esperado 200)."; exit 1; }
+          done
+          # http:// deve levar para https:// (aviso, não bloqueia)
+          http_url="http://${SITE_URL#https://}/"
+          if ! curl -sI --max-redirs 0 "$http_url" | grep -qi '^location: https://'; then
+            echo "::warning::${http_url} não redireciona para HTTPS. Ative 'Forçar HTTPS' no hPanel (SSL)."
+          fi
+          echo "✓ Site respondendo em HTTPS"

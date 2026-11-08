@@ -20,7 +20,8 @@ const photo = photoOf(item);
     <Picture
       src={photo}
       alt=""
-      formats={['avif', 'webp']}
+      formats={['avif']}
+      fallbackFormat="webp"
       widths={widthsFor(photo, [240, 400, 640])}
       sizes={SIZES.card}
       loading="lazy"
