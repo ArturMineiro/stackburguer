@@ -7,24 +7,25 @@ import { searchableText } from '../lib/search.ts';
 
 interface Props {
   categoria: Categoria;
+  /** Posição da categoria (1, 2, 3…), exibida como "01". */
+  index: number;
 }
 
-const { categoria } = Astro.props;
+const { categoria, index } = Astro.props;
 const titleId = `${categoria.id}-titulo`;
 ---
 
 <section class="menu-section" id={categoria.id} aria-labelledby={titleId} data-section={categoria.id}>
   <header class="section-head">
-    <span class="section-icon">
-      <Icon name={categoria.icone} size={24} />
-    </span>
-    <div class="section-heading">
-      <h2 class="section-title" id={titleId} tabindex="-1">
-        {categoria.titulo}
-      </h2>
-      {categoria.subtitulo && <p class="section-sub">{categoria.subtitulo}</p>}
-    </div>
-    <p class="section-count">{plural(categoria.itens.length, 'item', 'itens')}</p>
+    <p class="section-kicker kicker">
+      <Icon name={categoria.icone} size={14} />
+      <span>{String(index).padStart(2, '0')}</span>
+      <span class="section-count">· {plural(categoria.itens.length, 'item', 'itens')}</span>
+    </p>
+    <h2 class="section-title" id={titleId} tabindex="-1">
+      {categoria.titulo}
+    </h2>
+    {categoria.subtitulo && <p class="section-sub">{categoria.subtitulo}</p>}
   </header>
 
   <ul class="menu-grid" role="list">
@@ -49,7 +50,8 @@ const titleId = `${categoria.id}-titulo`;
           <ul class="extra-list" role="list">
             {extra.itens.map((adicional) => (
               <li>
-                <span>{adicional.nome}</span>
+                <span class="extra-name">{adicional.nome}</span>
+                <span class="extra-dots" aria-hidden="true" />
                 <span class="price">+ {formatPrice(adicional.preco)}</span>
               </li>
             ))}
@@ -62,99 +64,94 @@ const titleId = `${categoria.id}-titulo`;
 
 <style>
   .menu-section {
-    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-top: clamp(3rem, 7vw, 4.75rem);
   }
+  .menu-section:first-of-type {
+    padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
   .section-head {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: center;
-    gap: 0.35rem 0.9rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
   }
-  .section-icon {
-    display: grid;
-    place-items: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: var(--radius);
-    background: var(--brand-700);
-    color: var(--accent-400);
-    box-shadow: 0 10px 22px rgb(31 74 57 / 0.25);
+  .section-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .section-count {
+    color: var(--ink-500);
+    letter-spacing: 0.12em;
   }
   .section-title {
+    margin-top: 0.45rem;
     font-family: var(--font-display);
     font-size: var(--step-3);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
+    font-weight: 560;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     color: var(--brand-800);
   }
   .section-title:focus {
     outline: none;
   }
   .section-sub {
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
     color: var(--ink-500);
     font-size: var(--step--1);
-  }
-  .section-count {
-    grid-column: 1 / -1;
-    justify-self: start;
-    padding: 0.2rem 0.7rem;
-    border-radius: var(--radius-pill);
-    background: var(--cream-200);
-    color: var(--ink-700);
-    font-size: 0.78rem;
-    font-weight: 700;
   }
 
   .menu-grid {
     display: grid;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
 
+  /* Adicionais e combos: painel claro, como no cardápio impresso. */
   .extras {
     display: grid;
-    gap: 0.8rem;
-    margin-top: 1.1rem;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
   }
   .extra {
-    padding: 1.1rem 1.15rem;
+    padding: 1.15rem 1.2rem 1rem;
     border-radius: var(--radius-lg);
-    background: var(--brand-800);
-    color: #fff;
-    background-image: radial-gradient(120% 140% at 100% 0%, rgb(234 125 23 / 0.22), transparent 55%);
+    background: var(--cream-50);
+    box-shadow: inset 0 0 0 1px var(--line);
   }
   .extra-title {
     font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    color: var(--accent-400);
+    font-size: 1.3rem;
+    font-weight: 560;
+    letter-spacing: -0.01em;
+    color: var(--brand-800);
   }
   .extra-desc {
-    margin-top: 0.1rem;
-    color: rgb(255 255 255 / 0.75);
-    font-size: 0.9rem;
+    margin-top: 0.15rem;
+    color: var(--ink-500);
+    font-size: 0.88rem;
   }
   .extra-list {
     display: grid;
-    gap: 0.1rem 1.5rem;
-    margin-top: 0.7rem;
+    gap: 0 1.75rem;
+    margin-top: 0.6rem;
   }
   .extra-list li {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    padding: 0.38rem 0;
-    border-bottom: 1px dashed rgb(255 255 255 / 0.16);
-    font-size: 0.95rem;
+    padding: 0.32rem 0;
+    font-size: 0.93rem;
+    color: var(--ink-700);
   }
-  .extra-list li span:first-child {
+  .extra-dots {
     flex: 1;
+    min-width: 1rem;
+    border-bottom: 1px dotted var(--line-strong);
+    transform: translateY(-0.25rem);
   }
   .extra-list .price {
-    color: var(--accent-300);
+    color: var(--brand-800);
   }
 
   /* Durante a busca escondemos os blocos de adicionais. */
@@ -162,29 +159,16 @@ const titleId = `${categoria.id}-titulo`;
     display: none;
   }
 
-  @media (min-width: 40rem) {
-    .section-head {
-      grid-template-columns: auto minmax(0, 1fr) auto;
-    }
-    .section-count {
-      grid-column: auto;
-      justify-self: end;
-    }
+  @media (min-width: 48rem) {
     .menu-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.1rem;
+      gap: 0.9rem 1.1rem;
     }
     .extras {
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
     }
     .extra-list {
       grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    }
-  }
-  @media (min-width: 62rem) {
-    .menu-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.35rem;
     }
   }
 </style>

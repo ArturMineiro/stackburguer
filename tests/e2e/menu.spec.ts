@@ -49,7 +49,7 @@ test.describe('Cardápio', () => {
   test('botões e links principais têm área de toque confortável (≥ 44px)', async ({ page, isMobile }) => {
     test.skip(!isMobile, 'regra pensada para telas de toque');
     await page.goto('/');
-    const targets = page.locator('.chip, .catnav-pdf, .hero-actions .btn, .search-field input');
+    const targets = page.locator('.tab, .catnav-pdf, .hero-actions .btn, .search-field input');
     const count = await targets.count();
     for (let i = 0; i < count; i++) {
       const box = await targets.nth(i).boundingBox();

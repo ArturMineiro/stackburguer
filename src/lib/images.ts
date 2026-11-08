@@ -11,7 +11,7 @@ export function widthsFor(image: ImageMetadata, candidates: readonly number[]): 
 
 /** Tamanhos de exibição usados no site (mantidos juntos para o srcset bater com o CSS). */
 export const SIZES = {
-  card: '(min-width: 76rem) 23rem, (min-width: 62rem) 30vw, (min-width: 40rem) 46vw, 7.5rem',
+  card: '(min-width: 48rem) 6.5rem, (max-width: 22rem) 4.25rem, 5.25rem',
   dialog: '(min-width: 56rem) 26rem, 100vw',
   hero: '100vw',
 } as const;

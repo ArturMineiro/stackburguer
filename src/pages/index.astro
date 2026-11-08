@@ -29,8 +29,8 @@ import { cardapio } from '../data/menu.ts';
         Ver cardápio completo
       </button>
     </div>
-    {cardapio.categorias.map((categoria) => (
-      <MenuSection categoria={categoria} />
+    {cardapio.categorias.map((categoria, i) => (
+      <MenuSection categoria={categoria} index={i + 1} />
     ))}
   </main>
 
@@ -69,6 +69,6 @@ import { cardapio } from '../data/menu.ts';
   .menu-empty-title {
     color: var(--brand-800);
     font-size: var(--step-1);
-    font-weight: 800;
+    font-weight: 600;
   }
 </style>

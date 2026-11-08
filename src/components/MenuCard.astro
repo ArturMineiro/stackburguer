@@ -22,7 +22,7 @@ const photo = photoOf(item);
       alt=""
       formats={['avif']}
       fallbackFormat="webp"
-      widths={widthsFor(photo, [240, 400, 640])}
+      widths={widthsFor(photo, [160, 240, 320])}
       sizes={SIZES.card}
       loading="lazy"
       decoding="async"
@@ -30,52 +30,51 @@ const photo = photoOf(item);
   </div>
 
   <div class="card-body">
-    <h3 class="card-title">
-      <button type="button" class="card-open" data-open-item={item.id} aria-haspopup="dialog">
-        {item.nome}
-      </button>
-    </h3>
-    <p class="card-desc">{item.descricao}</p>
-    <Badges badges={item.selos} class="card-badges" />
-    <div class="card-foot">
+    <div class="card-top">
+      <h3 class="card-title">
+        <button type="button" class="card-open" data-open-item={item.id} aria-haspopup="dialog">
+          {item.nome}
+        </button>
+      </h3>
       <p class="card-price">
         {hasVariations(item) && <span class="card-from">a partir de</span>}
         <span class="price">{formatPrice(basePrice(item))}</span>
       </p>
+    </div>
+    <p class="card-desc">{item.descricao}</p>
+    <div class="card-foot">
+      <Badges badges={item.selos.slice(0, 2)} class="card-badges" />
       <span class="card-more" aria-hidden="true">
         <span class="card-more-label">Detalhes</span>
-        <Icon name="chevron-right" size={18} />
+        <Icon name="chevron-right" size={14} />
       </span>
     </div>
   </div>
 </article>
 
 <style>
+  /* Item de cardápio compacto: miniatura à esquerda, nome e preço na mesma linha. */
   .card {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 7.5rem;
-    grid-template-areas: 'body media';
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    align-items: start;
     gap: 0.9rem;
     height: 100%;
-    padding: 0.9rem;
+    padding: 0.75rem;
     border-radius: var(--radius-lg);
     background: #fff;
-    box-shadow:
-      var(--shadow-sm),
-      inset 0 0 0 1px rgb(234 223 204 / 0.7);
+    box-shadow: inset 0 0 0 1px var(--line);
     transition:
-      transform 0.25s var(--ease-out),
-      box-shadow 0.25s var(--ease-out);
+      box-shadow 0.2s,
+      transform 0.25s var(--ease-out);
   }
   .card:has(.card-open:focus-visible) {
-    outline: 3px solid var(--accent-500);
-    outline-offset: 3px;
+    outline: 2px solid var(--accent-500);
+    outline-offset: 2px;
   }
 
   .card-media {
-    grid-area: media;
-    align-self: start;
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: var(--radius);
@@ -88,21 +87,28 @@ const photo = photoOf(item);
   }
   .card-media :global(img) {
     object-fit: cover;
-    transition: transform 0.6s var(--ease-out);
+    transition: transform 0.5s var(--ease-out);
   }
 
   .card-body {
-    grid-area: body;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.3rem;
     min-width: 0;
+    height: 100%;
+  }
+  .card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
   .card-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    line-height: 1.25;
-    color: var(--brand-800);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink-900);
   }
   .card-open {
     text-align: left;
@@ -117,6 +123,22 @@ const photo = photoOf(item);
   .card-open:focus-visible {
     outline: none;
   }
+  .card-price {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.15;
+  }
+  .card-from {
+    color: var(--ink-500);
+    font-size: 0.64rem;
+    letter-spacing: 0.02em;
+  }
+  .card-price .price {
+    color: var(--brand-800);
+    font-size: 0.97rem;
+  }
   .card-desc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -124,87 +146,65 @@ const photo = photoOf(item);
     line-clamp: 2;
     overflow: hidden;
     color: var(--ink-500);
-    font-size: 0.92rem;
+    font-size: 0.875rem;
     line-height: 1.45;
   }
   .card-foot {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
     gap: 0.5rem;
     margin-top: auto;
-    padding-top: 0.35rem;
-  }
-  .card-price {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
-  .card-from {
-    color: var(--ink-500);
-    font-size: 0.72rem;
-    font-weight: 600;
-  }
-  .card-price .price {
-    color: var(--accent-700);
-    font-size: 1.12rem;
+    padding-top: 0.15rem;
   }
   .card-more {
     display: inline-flex;
     align-items: center;
-    gap: 0.15rem;
+    gap: 0.1rem;
+    margin-left: auto;
     color: var(--brand-600);
-    font-size: 0.85rem;
-    font-weight: 750;
-  }
-  /* No celular mostramos só a seta (o card inteiro é clicável). */
-  .card-more-label {
-    display: none;
+    font-size: 0.8rem;
+    font-weight: 500;
   }
 
   @media (hover: hover) {
     .card:hover {
-      transform: translateY(-3px);
       box-shadow:
-        var(--shadow),
-        inset 0 0 0 1px rgb(234 125 23 / 0.35);
+        inset 0 0 0 1px rgb(234 125 23 / 0.45),
+        var(--shadow);
+      transform: translateY(-1px);
     }
     .card:hover .card-media :global(img) {
-      transform: scale(1.05);
+      transform: scale(1.04);
+    }
+  }
+
+  /* No celular, um selo por card para não engordar a linha (todos aparecem no detalhe). */
+  @media (max-width: 47.99rem) {
+    .card-foot :global(.badge:nth-child(n + 2)) {
+      display: none;
     }
   }
 
   /* Celulares muito estreitos (ex.: Galaxy Fold fechado). */
   @media (max-width: 22rem) {
     .card {
-      grid-template-columns: minmax(0, 1fr) 5.75rem;
+      grid-template-columns: 4.25rem minmax(0, 1fr);
       gap: 0.7rem;
-      padding: 0.75rem;
+      padding: 0.65rem;
+    }
+    .card-more-label {
+      display: none;
     }
   }
 
-  /* A partir de tablets: card vertical com foto em destaque. */
-  @media (min-width: 40rem) {
+  @media (min-width: 48rem) {
     .card {
-      grid-template-columns: 1fr;
-      grid-template-areas: 'media' 'body';
-      grid-template-rows: auto 1fr;
-      gap: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    .card-media {
-      aspect-ratio: 4 / 3;
-      border-radius: 0;
-    }
-    .card-body {
-      padding: 1rem 1.1rem 1.1rem;
+      grid-template-columns: 6.5rem minmax(0, 1fr);
+      gap: 1.1rem;
+      padding: 0.85rem;
     }
     .card-title {
-      font-size: 1.15rem;
-    }
-    .card-more-label {
-      display: inline;
+      font-size: 1.04rem;
     }
   }
 </style>

@@ -36,14 +36,14 @@ export default defineConfig({
     },
     {
       provider: fontProviders.local(),
-      name: 'Bebas Neue',
+      name: 'Fraunces',
       cssVariable: '--font-display',
-      fallbacks: ['Impact', 'sans-serif'],
+      fallbacks: ['Georgia', 'serif'],
       options: {
         variants: [
           {
-            src: ['./src/assets/fonts/bebas-neue-latin-400-normal.woff2'],
-            weight: 400,
+            src: ['./src/assets/fonts/fraunces-latin-wght-normal.woff2'],
+            weight: '100 900',
             style: 'normal',
             display: 'swap',
           },
