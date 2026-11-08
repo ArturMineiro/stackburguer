@@ -1,0 +1,15 @@
+---
+import { iconUse, type IconName } from '../lib/icons.ts';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  /** Rótulo acessível; sem ele o ícone é decorativo (aria-hidden). */
+  label?: string;
+}
+
+const { name, size = 20, label } = Astro.props;
+const svg = label ? iconUse(name, { size, label }) : iconUse(name, { size });
+---
+
+<Fragment set:html={svg} />

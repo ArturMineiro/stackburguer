@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "categorias": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subtitulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "icone": {
+            "type": "string",
+            "enum": [
+              "utensils",
+              "hamburger",
+              "cup-soda",
+              "ice-cream-cone"
+            ]
+          },
+          "itens": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "nome": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "descricao": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "detalhes": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "imagem": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+\\.(?:jpe?g|png|webp|avif)$"
+                },
+                "ingredientes": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "opcoes": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "titulo": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "preco": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 10000
+                      }
+                    },
+                    "required": [
+                      "titulo",
+                      "preco"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "selos": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "novidade",
+                      "promo",
+                      "mais-pedido",
+                      "chef",
+                      "vegetariano",
+                      "picante",
+                      "compartilhar",
+                      "alcoolico"
+                    ]
+                  }
+                },
+                "tags": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "nota": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "id",
+                "nome",
+                "descricao",
+                "imagem",
+                "opcoes"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "extras": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "descricao": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "itens": {
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "preco": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 10000
+                      }
+                    },
+                    "required": [
+                      "nome",
+                      "preco"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "titulo",
+                "itens"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "titulo",
+          "icone",
+          "itens"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "categorias"
+  ],
+  "additionalProperties": false,
+  "title": "Cardápio",
+  "description": "Cardápio do site. Gerado de src/lib/menu.ts — rode `npm run schema` após mudar o esquema."
+}

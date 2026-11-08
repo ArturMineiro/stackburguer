@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+import { BADGE_INFO } from '../lib/badges.ts';
+import type { Badge } from '../lib/menu.ts';
+
+interface Props {
+  badges: readonly Badge[];
+  class?: string;
+}
+
+const { badges, class: className } = Astro.props;
+---
+
+{badges.length > 0 && (
+  <ul class:list={['badges', className]} role="list">
+    {badges.map((badge) => (
+      <li class="badge" data-tone={BADGE_INFO[badge].tone}>
+        <Icon name={BADGE_INFO[badge].icon} size={14} />
+        {BADGE_INFO[badge].label}
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+</style>

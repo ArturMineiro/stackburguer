@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Logo from '../assets/brand/logo.svg';
+---
+
+<BaseLayout title="Página não encontrada" noindex>
+  <main class="nf">
+    <Logo width={88} height={88} aria-hidden="true" />
+    <p class="nf-code">404</p>
+    <h1 class="nf-title">Essa página saiu do cardápio</h1>
+    <p class="nf-text">O endereço pode ter mudado. Que tal voltar e escolher seu lanche?</p>
+    <a class="btn btn-primary" href="/">
+      <Icon name="utensils" /> Ver o cardápio
+    </a>
+  </main>
+</BaseLayout>
+
+<style>
+  .nf {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.75rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 2rem var(--gutter-r) 2rem var(--gutter-l);
+    text-align: center;
+    color: #fff;
+    background:
+      radial-gradient(80% 60% at 50% 0%, rgb(234 125 23 / 0.22), transparent 60%),
+      linear-gradient(180deg, var(--brand-800), var(--brand-950));
+  }
+  .nf-code {
+    margin-top: 0.5rem;
+    color: var(--accent-400);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 3rem + 6vw, 7rem);
+    line-height: 0.9;
+  }
+  .nf-title {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .nf-text {
+    max-width: 32ch;
+    margin-bottom: 0.75rem;
+    color: rgb(255 255 255 / 0.8);
+  }
+</style>

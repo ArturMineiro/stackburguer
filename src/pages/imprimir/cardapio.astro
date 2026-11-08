@@ -1,0 +1,598 @@
+---
+import { Image } from 'astro:assets';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import Icon from '../../components/Icon.astro';
+import QrCode from '../../components/QrCode.astro';
+import Logo from '../../assets/brand/logo.svg';
+import heroImage from '../../assets/brand/hero.jpg';
+import { SITE, siteUrl, tableUrl } from '../../config/site.ts';
+import { attributionRequired, credits } from '../../data/credits.ts';
+import { cardapio, photoOf } from '../../data/menu.ts';
+import { BADGE_INFO } from '../../lib/badges.ts';
+import { formatDate, formatPrice } from '../../lib/format.ts';
+
+const host = new URL(siteUrl()).host;
+const updatedAt = formatDate(new Date());
+const photoWidth = (width: number) => Math.min(300, width);
+---
+
+<PrintLayout title={`Cardápio ${SITE.name}`}>
+  <!-- CAPA -->
+  <section class="cover">
+    <Image
+      src={heroImage}
+      alt=""
+      width={Math.min(1800, heroImage.width)}
+      format="jpg"
+      quality={80}
+      loading="eager"
+      class="cover-img"
+    />
+    <div class="cover-shade"></div>
+    <div class="cover-content">
+      <Logo width={128} height={128} class="cover-logo" aria-hidden="true" />
+      <p class="cover-kicker">Cardápio</p>
+      <h1 class="cover-title">{SITE.name}</h1>
+      <p class="cover-tagline">{SITE.tagline}</p>
+      <ul class="cover-cats">
+        {cardapio.categorias.map((categoria) => (
+          <li>{categoria.titulo}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="cover-foot">
+      <div class="qr-box">
+        <QrCode url={tableUrl()} title="QR Code do cardápio digital" />
+      </div>
+      <div>
+        <p class="cover-foot-title">Cardápio digital com fotos</p>
+        <p>Aponte a câmera do celular para o código e veja os detalhes de cada prato.</p>
+        <p class="cover-url">{host}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <main class="menu-pages">
+    {cardapio.categorias.map((categoria) => (
+      <section class="cat">
+        <header class="cat-head">
+          <span class="cat-icon">
+            <Icon name={categoria.icone} size={22} />
+          </span>
+          <div>
+            <h2 class="cat-title">{categoria.titulo}</h2>
+            {categoria.subtitulo && <p class="cat-sub">{categoria.subtitulo}</p>}
+          </div>
+        </header>
+
+        <div class="items">
+          {categoria.itens.map((item) => {
+            const photo = photoOf(item);
+            return (
+              <article class="item">
+                <Image
+                  src={photo}
+                  alt=""
+                  width={photoWidth(photo.width)}
+                  format="jpg"
+                  quality={78}
+                  loading="eager"
+                  class="item-img"
+                />
+                <div class="item-body">
+                  <h3 class="item-name">{item.nome}</h3>
+                  {item.selos.length > 0 && (
+                    <p class="item-badges">
+                      {item.selos.map((selo) => (
+                        <span class="badge" data-tone={BADGE_INFO[selo].tone}>
+                          {BADGE_INFO[selo].label}
+                        </span>
+                      ))}
+                    </p>
+                  )}
+                  <p class="item-desc">{item.detalhes ?? item.descricao}</p>
+                  {item.ingredientes.length > 0 && (
+                    <p class="item-ingr">
+                      <strong>Ingredientes:</strong> {item.ingredientes.join(', ')}.
+                    </p>
+                  )}
+                  <ul class="prices">
+                    {item.opcoes.map((opcao) => (
+                      <li>
+                        <span>{opcao.titulo}</span>
+                        <i aria-hidden="true" />
+                        <b>{formatPrice(opcao.preco)}</b>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {categoria.extras.length > 0 && (
+          <div class="extras">
+            {categoria.extras.map((extra) => (
+              <div class="extra">
+                <h3 class="extra-title">{extra.titulo}</h3>
+                {extra.descricao && <p class="extra-desc">{extra.descricao}</p>}
+                <ul class="prices prices--light">
+                  {extra.itens.map((adicional) => (
+                    <li>
+                      <span>{adicional.nome}</span>
+                      <i aria-hidden="true" />
+                      <b>+ {formatPrice(adicional.preco)}</b>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    ))}
+  </main>
+
+  <!-- CONTRACAPA -->
+  <section class="back">
+    <div class="back-inner">
+      <Logo width={88} height={88} aria-hidden="true" />
+      <p class="back-thanks">Obrigado pela visita!</p>
+      <p class="back-sub">Volte sempre — e conte pra gente o que achou.</p>
+
+      <div class="back-grid">
+        <div>
+          <h2 class="back-h">Horário</h2>
+          <dl class="back-hours">
+            {SITE.hours.map((horario) => (
+              <div>
+                <dt>{horario.label}</dt>
+                <dd>{horario.time}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div>
+          <h2 class="back-h">Onde estamos</h2>
+          <p>
+            {SITE.address.street}
+            <br />
+            {SITE.address.city} – {SITE.address.region} · CEP {SITE.address.postalCode}
+          </p>
+          <h2 class="back-h">Redes sociais</h2>
+          <p>{SITE.social.map((rede) => `${rede.name}: ${rede.handle}`).join(' · ')}</p>
+        </div>
+      </div>
+
+      <div class="back-qr">
+        <div class="qr-box">
+          <QrCode url={tableUrl()} title="QR Code do cardápio digital" />
+        </div>
+        <p>
+          <strong>{host}</strong>
+          <br />
+          Cardápio sempre atualizado no celular.
+        </p>
+      </div>
+
+      <p class="back-legal">
+        {SITE.priceNotice}
+        <br />
+        Cardápio atualizado em {updatedAt} · CNPJ {SITE.cnpj}
+        <br />
+        Cardápio digital desenvolvido por {SITE.credit.name}
+      </p>
+      {credits.length > 0 && (
+        <p class="back-photos">
+          Fotos ilustrativas: Unsplash e colaboradores.
+          {attributionRequired.map((credito) => (
+            <>
+              {' '}
+              {credito.uso}: foto de {credito.autor} ({credito.fonte}), {credito.licenca}, adaptada.
+            </>
+          ))}{' '}
+          Créditos completos em {host}/creditos
+        </p>
+      )}
+    </div>
+  </section>
+</PrintLayout>
+
+<style is:global>
+  @page {
+    size: A4;
+    margin: 13mm 12mm 15mm;
+    @bottom-left {
+      content: 'Preços em reais (R$), sujeitos a alteração.';
+      font-family: var(--font-sans);
+      font-size: 7.5pt;
+      color: #6b5e52;
+    }
+    @bottom-right {
+      content: counter(page) ' / ' counter(pages);
+      font-family: var(--font-sans);
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: #6b5e52;
+    }
+  }
+  @page cover {
+    margin: 0;
+    @bottom-left {
+      content: none;
+    }
+    @bottom-right {
+      content: none;
+    }
+  }
+  @page back {
+    margin: 0;
+    @bottom-left {
+      content: none;
+    }
+    @bottom-right {
+      content: none;
+    }
+  }
+
+  .print-body {
+    font-size: 9pt;
+    line-height: 1.4;
+    color: var(--ink-900);
+  }
+
+  /* ---------- Capa ---------- */
+  .cover {
+    page: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    color: #fff;
+    background: var(--brand-900);
+    break-after: page;
+  }
+  .cover-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 65% 50%;
+  }
+  .cover-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgb(11 33 26 / 0.92) 0%,
+        rgb(11 33 26 / 0.55) 38%,
+        rgb(11 33 26 / 0.6) 62%,
+        rgb(11 33 26 / 0.96) 100%
+      ),
+      radial-gradient(90% 50% at 50% 100%, rgb(234 125 23 / 0.25), transparent 70%);
+  }
+  .cover-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30mm 18mm 0;
+    text-align: center;
+  }
+  .cover-logo {
+    width: 34mm;
+    height: 34mm;
+    filter: drop-shadow(0 4mm 8mm rgb(0 0 0 / 0.4));
+  }
+  .cover-kicker {
+    margin-top: 9mm;
+    color: var(--accent-400);
+    font-size: 13pt;
+    font-weight: 800;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: 78pt;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2mm 8mm rgb(0 0 0 / 0.35);
+  }
+  .cover-tagline {
+    margin-top: 3mm;
+    font-size: 15pt;
+    color: rgb(255 255 255 / 0.9);
+  }
+  .cover-cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5mm;
+    margin-top: 9mm;
+    padding: 0;
+    list-style: none;
+  }
+  .cover-cats li {
+    padding: 1.6mm 4.5mm;
+    border-radius: 99px;
+    border: 0.35mm solid rgb(255 177 92 / 0.7);
+    color: var(--accent-300);
+    font-size: 10pt;
+    font-weight: 700;
+  }
+  .cover-foot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 7mm;
+    margin: 0 18mm 18mm;
+    padding: 6mm;
+    border-radius: 6mm;
+    background: rgb(255 255 255 / 0.1);
+    border: 0.3mm solid rgb(255 255 255 / 0.2);
+    font-size: 10.5pt;
+    color: rgb(255 255 255 / 0.88);
+  }
+  .cover-foot-title {
+    color: #fff;
+    font-size: 14pt;
+    font-weight: 800;
+  }
+  .cover-url {
+    margin-top: 1.5mm;
+    color: var(--accent-300);
+    font-weight: 800;
+  }
+  .qr-box {
+    flex: none;
+    width: 34mm;
+    padding: 2.6mm;
+    border-radius: 3.5mm;
+    background: #fff;
+    box-shadow: 0 0 0 1.2mm var(--accent-500);
+  }
+
+  /* ---------- Páginas do cardápio ---------- */
+  .cat + .cat {
+    margin-top: 9mm;
+  }
+  .cat-head {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    padding-bottom: 3mm;
+    margin-bottom: 4.5mm;
+    border-bottom: 0.8mm solid var(--accent-600);
+    break-after: avoid;
+  }
+  .cat-icon {
+    display: grid;
+    place-items: center;
+    width: 11mm;
+    height: 11mm;
+    border-radius: 3mm;
+    background: var(--brand-700);
+    color: var(--accent-400);
+  }
+  .cat-title {
+    font-family: var(--font-display);
+    font-size: 30pt;
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--brand-800);
+  }
+  .cat-sub {
+    color: var(--ink-500);
+    font-size: 9.5pt;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5mm 7mm;
+  }
+  .item {
+    display: grid;
+    grid-template-columns: 24mm 1fr;
+    gap: 3.5mm;
+    padding-bottom: 4.5mm;
+    border-bottom: 0.25mm dashed var(--cream-300);
+    break-inside: avoid;
+  }
+  .item-img {
+    width: 24mm;
+    height: 24mm;
+    border-radius: 3mm;
+    object-fit: cover;
+  }
+  .item-name {
+    font-size: 11pt;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--brand-800);
+  }
+  .item-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2mm;
+    margin-top: 1.2mm;
+  }
+  .item-badges .badge {
+    padding: 0.4mm 2mm;
+    font-size: 6.5pt;
+  }
+  .item-desc {
+    margin-top: 1.2mm;
+    color: var(--ink-700);
+    font-size: 8.3pt;
+  }
+  .item-ingr {
+    margin-top: 1mm;
+    color: var(--ink-500);
+    font-size: 7.3pt;
+    font-style: italic;
+  }
+  .item-ingr strong {
+    font-style: normal;
+    font-weight: 700;
+  }
+  .prices {
+    margin-top: 1.8mm;
+    padding: 0;
+    list-style: none;
+  }
+  .prices li {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5mm;
+    font-size: 8.8pt;
+    font-weight: 600;
+  }
+  .prices li + li {
+    margin-top: 0.6mm;
+  }
+  .prices i {
+    flex: 1;
+    border-bottom: 0.35mm dotted #c9b9a1;
+    transform: translateY(-0.8mm);
+  }
+  .prices b {
+    color: var(--accent-700);
+    font-size: 9.5pt;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .extras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70mm, 1fr));
+    gap: 4mm;
+    margin-top: 5mm;
+    break-inside: avoid;
+  }
+  .extra {
+    padding: 4.5mm 5mm;
+    border-radius: 4mm;
+    background: var(--brand-800);
+    color: #fff;
+  }
+  .extra-title {
+    font-family: var(--font-display);
+    font-size: 17pt;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--accent-400);
+  }
+  .extra-desc {
+    color: rgb(255 255 255 / 0.75);
+    font-size: 8pt;
+  }
+  .prices--light li {
+    font-weight: 500;
+  }
+  .prices--light i {
+    border-color: rgb(255 255 255 / 0.3);
+  }
+  .prices--light b {
+    color: var(--accent-300);
+  }
+
+  /* ---------- Contracapa ---------- */
+  .back {
+    page: back;
+    display: flex;
+    width: 210mm;
+    height: 297mm;
+    break-before: page;
+    color: rgb(255 255 255 / 0.85);
+    background:
+      radial-gradient(80% 50% at 0% 0%, rgb(234 125 23 / 0.22), transparent 60%),
+      linear-gradient(180deg, var(--brand-800), var(--brand-950));
+  }
+  .back-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 20mm;
+    text-align: center;
+    font-size: 10.5pt;
+  }
+  .back-thanks {
+    margin-top: 7mm;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 46pt;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .back-sub {
+    margin-top: 2mm;
+    font-size: 12pt;
+  }
+  .back-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    width: 100%;
+    margin-top: 14mm;
+    text-align: left;
+  }
+  .back-h {
+    margin: 0 0 2mm;
+    color: var(--accent-300);
+    font-size: 8.5pt;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .back-h:not(:first-child) {
+    margin-top: 6mm;
+  }
+  .back-hours div {
+    display: flex;
+    justify-content: space-between;
+    gap: 4mm;
+    padding: 1.6mm 0;
+    border-bottom: 0.25mm dashed rgb(255 255 255 / 0.2);
+  }
+  .back-hours dd {
+    color: #fff;
+    font-weight: 700;
+  }
+  .back-qr {
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+    margin-top: 14mm;
+    text-align: left;
+  }
+  .back-qr strong {
+    color: var(--accent-300);
+    font-size: 13pt;
+  }
+  .back-legal {
+    margin-top: 14mm;
+    color: rgb(255 255 255 / 0.6);
+    font-size: 8.5pt;
+    line-height: 1.6;
+  }
+  .back-photos {
+    max-width: 150mm;
+    margin-top: 4mm;
+    color: rgb(255 255 255 / 0.45);
+    font-size: 6.5pt;
+    line-height: 1.5;
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import logoSource from '../assets/brand/logo.svg?raw';
+import { qrSvg } from '../lib/qr.ts';
+
+interface Props {
+  url: string;
+  /** Texto acessível (ex.: "QR Code do cardápio digital"). */
+  title?: string;
+  withLogo?: boolean;
+  dark?: string;
+  class?: string;
+}
+
+const { url, title, withLogo = true, dark = '#10291f', class: className } = Astro.props;
+const logoInner = logoSource.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+const svg = qrSvg(url, {
+  dark,
+  ...(title ? { title } : {}),
+  ...(className ? { className } : {}),
+  ...(withLogo ? { logo: logoInner } : {}),
+});
+---
+
+<Fragment set:html={svg} />

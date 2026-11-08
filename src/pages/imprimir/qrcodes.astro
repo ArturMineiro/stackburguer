@@ -1,0 +1,259 @@
+---
+/**
+ * Cartões de mesa (A6) com QR Code — 4 por folha A4, com marcas de corte.
+ * Quantidade: SITE.tableCards.count ou a variável de ambiente MESAS.
+ * Vagas que sobram na última folha recebem cartões gerais (balcão/entrada).
+ */
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import QrCode from '../../components/QrCode.astro';
+import Logo from '../../assets/brand/logo.svg';
+import { SITE, siteUrl, tableCount, tableUrl } from '../../config/site.ts';
+
+const total = tableCount();
+const host = new URL(siteUrl()).host;
+const cards: (number | null)[] = Array.from({ length: total }, (_, i) => i + 1);
+while (cards.length % 4 !== 0) cards.push(null);
+const sheets = Array.from({ length: cards.length / 4 }, (_, i) => cards.slice(i * 4, i * 4 + 4));
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<PrintLayout title={`QR Codes das mesas — ${SITE.name}`}>
+  {sheets.map((sheet) => (
+    <section class="sheet">
+      {sheet.map((table) => (
+        <div class="slot">
+          <span class="crop tl" />
+          <span class="crop tr" />
+          <span class="crop bl" />
+          <span class="crop br" />
+          <article class="tcard">
+            <header class="tcard-head">
+              <Logo width={56} height={56} class="tcard-logo" aria-hidden="true" />
+              <div>
+                <p class="tcard-brand">{SITE.name}</p>
+                <p class="tcard-kicker">Cardápio digital</p>
+              </div>
+            </header>
+            <div class="tcard-body">
+              <div class="tcard-qr">
+                <QrCode
+                  url={tableUrl(table ?? undefined)}
+                  title={table ? `QR Code da mesa ${pad(table)}` : 'QR Code do cardápio digital'}
+                />
+              </div>
+              <p class="tcard-cta">Aponte a câmera do celular</p>
+              <p class="tcard-text">e veja o cardápio completo, com fotos e preços.</p>
+            </div>
+            <footer class="tcard-foot">
+              {table ? (
+                <>
+                  <span class="tcard-label">Mesa</span>
+                  <span class="tcard-number">{pad(table)}</span>
+                </>
+              ) : (
+                <span class="tcard-welcome">Bem-vindo!</span>
+              )}
+            </footer>
+            <p class="tcard-url">{host}</p>
+          </article>
+        </div>
+      ))}
+    </section>
+  ))}
+</PrintLayout>
+
+<style is:global>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .sheet {
+    display: grid;
+    grid-template-columns: repeat(2, 105mm);
+    grid-template-rows: repeat(2, 148.5mm);
+    width: 210mm;
+    height: 297mm;
+    break-after: page;
+  }
+  .sheet:last-child {
+    break-after: auto;
+  }
+  .slot {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  /* Marcas de corte nos cantos de cada cartão (95 × 136 mm). */
+  .crop {
+    position: absolute;
+    width: 5mm;
+    height: 5mm;
+  }
+  .crop::before,
+  .crop::after {
+    content: '';
+    position: absolute;
+    background: #9a8f84;
+  }
+  .crop::before {
+    width: 4mm;
+    height: 0.2mm;
+  }
+  .crop::after {
+    width: 0.2mm;
+    height: 4mm;
+  }
+  .crop.tl {
+    left: calc(5mm - 5mm);
+    top: calc(6.25mm - 5mm);
+  }
+  .crop.tl::before {
+    right: 1mm;
+    bottom: 0;
+  }
+  .crop.tl::after {
+    right: 0;
+    bottom: 1mm;
+  }
+  .crop.tr {
+    right: 0;
+    top: calc(6.25mm - 5mm);
+  }
+  .crop.tr::before {
+    left: 1mm;
+    bottom: 0;
+  }
+  .crop.tr::after {
+    left: 0;
+    bottom: 1mm;
+  }
+  .crop.bl {
+    left: 0;
+    bottom: calc(6.25mm - 5mm);
+  }
+  .crop.bl::before {
+    right: 1mm;
+    top: 0;
+  }
+  .crop.bl::after {
+    right: 0;
+    top: 1mm;
+  }
+  .crop.br {
+    right: 0;
+    bottom: calc(6.25mm - 5mm);
+  }
+  .crop.br::before {
+    left: 1mm;
+    top: 0;
+  }
+  .crop.br::after {
+    left: 0;
+    top: 1mm;
+  }
+
+  .tcard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 95mm;
+    height: 136mm;
+    overflow: hidden;
+    border-radius: 5mm;
+    background: var(--cream-50);
+    box-shadow: inset 0 0 0 0.3mm var(--cream-300);
+  }
+  .tcard-head {
+    display: flex;
+    align-items: center;
+    gap: 3.5mm;
+    padding: 6mm 6.5mm;
+    color: #fff;
+    background:
+      radial-gradient(120% 160% at 100% 0%, rgb(234 125 23 / 0.35), transparent 55%),
+      linear-gradient(160deg, var(--brand-700), var(--brand-900));
+  }
+  .tcard-logo {
+    flex: none;
+    width: 15mm;
+    height: 15mm;
+  }
+  .tcard-brand {
+    font-family: var(--font-display);
+    font-size: 25pt;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+  }
+  .tcard-kicker {
+    color: var(--accent-400);
+    font-size: 7.5pt;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .tcard-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4mm 7mm 3mm;
+    text-align: center;
+  }
+  .tcard-qr {
+    width: 52mm;
+    padding: 3mm;
+    border-radius: 4mm;
+    background: #fff;
+    box-shadow:
+      0 0 0 1.1mm var(--accent-500),
+      0 2mm 5mm rgb(31 26 21 / 0.12);
+  }
+  .tcard-cta {
+    margin-top: 4.5mm;
+    color: var(--brand-800);
+    font-size: 11pt;
+    font-weight: 800;
+  }
+  .tcard-text {
+    margin-top: 0.5mm;
+    color: var(--ink-500);
+    font-size: 8.5pt;
+  }
+  .tcard-foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3mm;
+    padding: 2.5mm 6mm 2mm;
+    color: var(--ink-900);
+    background: var(--accent-600);
+  }
+  .tcard-label {
+    font-size: 11pt;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .tcard-number {
+    font-family: var(--font-display);
+    font-size: 40pt;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .tcard-welcome {
+    font-family: var(--font-display);
+    font-size: 30pt;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+  }
+  .tcard-url {
+    padding: 1.6mm 0 2mm;
+    background: var(--accent-600);
+    color: rgb(31 26 21 / 0.75);
+    font-size: 7pt;
+    font-weight: 700;
+    text-align: center;
+  }
+</style>

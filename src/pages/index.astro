@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BackToTop from '../components/BackToTop.astro';
+import CategoryNav from '../components/CategoryNav.astro';
+import Hero from '../components/Hero.astro';
+import ItemDialog from '../components/ItemDialog.astro';
+import MenuSection from '../components/MenuSection.astro';
+import SearchBar from '../components/SearchBar.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import StructuredData from '../components/StructuredData.astro';
+import { cardapio } from '../data/menu.ts';
+---
+
+<BaseLayout>
+  <StructuredData slot="head" />
+
+  <a class="skip-link" href="#cardapio">
+    Pular para o cardápio
+  </a>
+  <Hero />
+  <CategoryNav />
+
+  <main id="cardapio" class="menu container" tabindex="-1">
+    <SearchBar />
+    <div class="menu-empty" data-search-empty hidden>
+      <p class="menu-empty-title">Nada encontrado por aqui.</p>
+      <p>Tente outro termo, como “bacon”, “batata” ou “milkshake”.</p>
+      <button type="button" class="btn btn-dark" data-search-reset>
+        Ver cardápio completo
+      </button>
+    </div>
+    {cardapio.categorias.map((categoria) => (
+      <MenuSection categoria={categoria} />
+    ))}
+  </main>
+
+  <SiteFooter />
+  <BackToTop />
+
+  {cardapio.categorias.map((categoria) =>
+    categoria.itens.map((item) => <ItemDialog item={item} categoria={categoria} />),
+  )}
+</BaseLayout>
+
+<script>
+  import '../scripts/menu-page.ts';
+</script>
+
+<style>
+  .menu {
+    position: relative;
+    z-index: 1;
+    padding-top: 1.5rem;
+    outline: none;
+  }
+  .menu-empty {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    margin: 2.5rem auto 0;
+    padding: 2rem 1.25rem;
+    max-width: 30rem;
+    border-radius: var(--radius-lg);
+    background: #fff;
+    color: var(--ink-500);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .menu-empty-title {
+    color: var(--brand-800);
+    font-size: var(--step-1);
+    font-weight: 800;
+  }
+</style>

@@ -1,0 +1,190 @@
+---
+import Icon from './Icon.astro';
+import MenuCard from './MenuCard.astro';
+import { formatPrice, plural } from '../lib/format.ts';
+import type { Categoria } from '../lib/menu.ts';
+import { searchableText } from '../lib/search.ts';
+
+interface Props {
+  categoria: Categoria;
+}
+
+const { categoria } = Astro.props;
+const titleId = `${categoria.id}-titulo`;
+---
+
+<section class="menu-section" id={categoria.id} aria-labelledby={titleId} data-section={categoria.id}>
+  <header class="section-head">
+    <span class="section-icon">
+      <Icon name={categoria.icone} size={24} />
+    </span>
+    <div class="section-heading">
+      <h2 class="section-title" id={titleId} tabindex="-1">
+        {categoria.titulo}
+      </h2>
+      {categoria.subtitulo && <p class="section-sub">{categoria.subtitulo}</p>}
+    </div>
+    <p class="section-count">{plural(categoria.itens.length, 'item', 'itens')}</p>
+  </header>
+
+  <ul class="menu-grid" role="list">
+    {categoria.itens.map((item) => (
+      <li
+        class="menu-item"
+        id={`item-${item.id}`}
+        data-menu-item={item.id}
+        data-search={searchableText(item, categoria)}
+      >
+        <MenuCard item={item} />
+      </li>
+    ))}
+  </ul>
+
+  {categoria.extras.length > 0 && (
+    <div class="extras" data-extras>
+      {categoria.extras.map((extra) => (
+        <div class="extra">
+          <h3 class="extra-title">{extra.titulo}</h3>
+          {extra.descricao && <p class="extra-desc">{extra.descricao}</p>}
+          <ul class="extra-list" role="list">
+            {extra.itens.map((adicional) => (
+              <li>
+                <span>{adicional.nome}</span>
+                <span class="price">+ {formatPrice(adicional.preco)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .menu-section {
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.35rem 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius);
+    background: var(--brand-700);
+    color: var(--accent-400);
+    box-shadow: 0 10px 22px rgb(31 74 57 / 0.25);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--brand-800);
+  }
+  .section-title:focus {
+    outline: none;
+  }
+  .section-sub {
+    margin-top: 0.2rem;
+    color: var(--ink-500);
+    font-size: var(--step--1);
+  }
+  .section-count {
+    grid-column: 1 / -1;
+    justify-self: start;
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: var(--cream-200);
+    color: var(--ink-700);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .menu-grid {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .extras {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+  }
+  .extra {
+    padding: 1.1rem 1.15rem;
+    border-radius: var(--radius-lg);
+    background: var(--brand-800);
+    color: #fff;
+    background-image: radial-gradient(120% 140% at 100% 0%, rgb(234 125 23 / 0.22), transparent 55%);
+  }
+  .extra-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--accent-400);
+  }
+  .extra-desc {
+    margin-top: 0.1rem;
+    color: rgb(255 255 255 / 0.75);
+    font-size: 0.9rem;
+  }
+  .extra-list {
+    display: grid;
+    gap: 0.1rem 1.5rem;
+    margin-top: 0.7rem;
+  }
+  .extra-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.38rem 0;
+    border-bottom: 1px dashed rgb(255 255 255 / 0.16);
+    font-size: 0.95rem;
+  }
+  .extra-list li span:first-child {
+    flex: 1;
+  }
+  .extra-list .price {
+    color: var(--accent-300);
+  }
+
+  /* Durante a busca escondemos os blocos de adicionais. */
+  :global(.is-searching) .extras {
+    display: none;
+  }
+
+  @media (min-width: 40rem) {
+    .section-head {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .section-count {
+      grid-column: auto;
+      justify-self: end;
+    }
+    .menu-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+    .extras {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    }
+    .extra-list {
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    }
+  }
+  @media (min-width: 62rem) {
+    .menu-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+  }
+</style>

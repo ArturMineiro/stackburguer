@@ -1,0 +1,130 @@
+---
+/** Imagem de prévia do link (WhatsApp, Instagram, Facebook…): 1200 × 630. */
+import { Image } from 'astro:assets';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import Logo from '../../assets/brand/logo.svg';
+import heroImage from '../../assets/brand/hero.jpg';
+import { SITE, siteUrl } from '../../config/site.ts';
+import { cardapio } from '../../data/menu.ts';
+
+const host = new URL(siteUrl()).host;
+---
+
+<PrintLayout title={`Prévia — ${SITE.name}`}>
+  <div class="og">
+    <Image
+      src={heroImage}
+      alt=""
+      width={Math.min(1600, heroImage.width)}
+      format="jpg"
+      quality={85}
+      loading="eager"
+      class="og-bg"
+    />
+    <div class="og-shade"></div>
+    <div class="og-content">
+      <Logo width={112} height={112} class="og-logo" aria-hidden="true" />
+      <p class="og-kicker">Cardápio digital</p>
+      <h1 class="og-title">{SITE.name}</h1>
+      <p class="og-tagline">{SITE.tagline}</p>
+      <ul class="og-cats">
+        {cardapio.categorias.map((categoria) => (
+          <li>{categoria.titulo}</li>
+        ))}
+      </ul>
+    </div>
+    <p class="og-url">{host}</p>
+  </div>
+</PrintLayout>
+
+<style is:global>
+  html,
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+  .og {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    color: #fff;
+    background: var(--brand-900);
+  }
+  .og-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .og-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 75% at 50% 50%, rgb(11 33 26 / 0.5), rgb(11 33 26 / 0.88) 100%),
+      linear-gradient(0deg, rgb(234 125 23 / 0.18), transparent 40%);
+  }
+  .og-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .og-logo {
+    width: 112px;
+    height: 112px;
+    filter: drop-shadow(0 12px 28px rgb(0 0 0 / 0.45));
+  }
+  .og-kicker {
+    margin-top: 18px;
+    color: var(--accent-400);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+  .og-title {
+    font-family: var(--font-display);
+    font-size: 150px;
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    text-shadow: 0 8px 36px rgb(0 0 0 / 0.45);
+  }
+  .og-tagline {
+    margin-top: 6px;
+    font-size: 30px;
+    color: rgb(255 255 255 / 0.92);
+  }
+  .og-cats {
+    display: flex;
+    gap: 12px;
+    margin-top: 26px;
+    padding: 0;
+    list-style: none;
+  }
+  .og-cats li {
+    padding: 8px 20px;
+    border-radius: 99px;
+    background: rgb(234 125 23 / 0.95);
+    color: var(--ink-900);
+    font-size: 21px;
+    font-weight: 800;
+  }
+  .og-url {
+    position: absolute;
+    bottom: 26px;
+    left: 0;
+    right: 0;
+    color: rgb(255 255 255 / 0.8);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+</style>

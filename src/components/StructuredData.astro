@@ -1,0 +1,71 @@
+---
+/** Dados estruturados (schema.org) — o Google entende o cardápio, preços e horários. */
+import { DOWNLOADS, SITE, siteUrl } from '../config/site.ts';
+import { cardapio } from '../data/menu.ts';
+
+const DAY_NAMES: Record<string, string> = {
+  Mo: 'Monday',
+  Tu: 'Tuesday',
+  We: 'Wednesday',
+  Th: 'Thursday',
+  Fr: 'Friday',
+  Sa: 'Saturday',
+  Su: 'Sunday',
+};
+
+const url = `${siteUrl()}/`;
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: SITE.name,
+  description: SITE.description,
+  url,
+  image: `${siteUrl()}${DOWNLOADS.ogImage.path}`,
+  servesCuisine: ['Hambúrguer', 'Lanches', 'Porções'],
+  priceRange: '$$',
+  currenciesAccepted: SITE.currency,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.region,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.country,
+  },
+  openingHoursSpecification: SITE.hours.map((horario) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: horario.days.map((day) => DAY_NAMES[day]),
+    opens: horario.opens,
+    closes: horario.closes,
+  })),
+  sameAs: SITE.social.map((rede) => rede.url),
+  hasMenu: {
+    '@type': 'Menu',
+    name: `Cardápio ${SITE.name}`,
+    inLanguage: SITE.locale,
+    hasMenuSection: cardapio.categorias.map((categoria) => ({
+      '@type': 'MenuSection',
+      name: categoria.titulo,
+      ...(categoria.subtitulo ? { description: categoria.subtitulo } : {}),
+      hasMenuItem: categoria.itens.map((item) => ({
+        '@type': 'MenuItem',
+        name: item.nome,
+        description: item.detalhes ?? item.descricao,
+        url: `${url}#item-${item.id}`,
+        ...(item.selos.includes('vegetariano') ? { suitableForDiet: 'https://schema.org/VegetarianDiet' } : {}),
+        offers: item.opcoes.map((opcao) => ({
+          '@type': 'Offer',
+          name: opcao.titulo,
+          price: opcao.preco.toFixed(2),
+          priceCurrency: SITE.currency,
+        })),
+      })),
+    })),
+  },
+};
+
+// Evita que "</script>" dentro de algum texto feche a tag antes da hora.
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

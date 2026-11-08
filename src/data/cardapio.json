@@ -1,0 +1,716 @@
+{
+  "$schema": "./cardapio.schema.json",
+  "categorias": [
+    {
+      "id": "entradas",
+      "titulo": "Entradas",
+      "subtitulo": "Porções para abrir o apetite e dividir com a mesa.",
+      "icone": "utensils",
+      "itens": [
+        {
+          "id": "bruschetta",
+          "nome": "Bruschetta",
+          "descricao": "Fatias de pão com tomate e manjericão.",
+          "detalhes": "Fatias de pão italiano tostadas na brasa, cobertas com tomate fresco temperado, manjericão e finalizadas com azeite extravirgem.",
+          "imagem": "bruschetta.jpg",
+          "ingredientes": [
+            "Pão italiano",
+            "Tomate italiano",
+            "Manjericão fresco",
+            "Alho",
+            "Azeite extravirgem",
+            "Flor de sal"
+          ],
+          "opcoes": [
+            { "titulo": "Serve 1 pessoa", "preco": 15 },
+            { "titulo": "Serve 2 pessoas", "preco": 25 },
+            { "titulo": "Serve 3 ou mais", "preco": 35 }
+          ],
+          "selos": ["novidade", "vegetariano"],
+          "nota": "Ingredientes frescos • Vegetariano"
+        },
+        {
+          "id": "pastel",
+          "nome": "Pastéis Sortidos",
+          "descricao": "Massa crocante com recheios variados.",
+          "detalhes": "Pastéis de massa fininha e crocante, fritos na hora, com recheios sortidos de carne, queijo e frango com catupiry.",
+          "imagem": "pastel.jpg",
+          "ingredientes": [
+            "Massa de pastel",
+            "Carne moída temperada",
+            "Queijo muçarela",
+            "Frango desfiado",
+            "Catupiry",
+            "Cheiro-verde"
+          ],
+          "opcoes": [
+            { "titulo": "4 unidades", "preco": 45 },
+            { "titulo": "8 unidades", "preco": 85 },
+            { "titulo": "12 unidades", "preco": 120 }
+          ],
+          "selos": ["promo", "compartilhar"],
+          "tags": ["pastel", "salgado", "frito"],
+          "nota": "Serve bem para compartilhar"
+        },
+        {
+          "id": "batata-frita",
+          "nome": "Batata Frita",
+          "descricao": "Crocante por fora, macia por dentro.",
+          "detalhes": "Batatas selecionadas, cortadas na casa e fritas duas vezes para ficarem sequinhas e douradas.",
+          "imagem": "batata-frita.jpg",
+          "ingredientes": ["Batata", "Sal", "Maionese da casa"],
+          "opcoes": [
+            { "titulo": "Meia porção", "preco": 25 },
+            { "titulo": "Porção inteira", "preco": 45 }
+          ],
+          "selos": ["mais-pedido", "vegetariano"],
+          "tags": ["fritas", "batatinha"],
+          "nota": "Acompanha maionese da casa"
+        },
+        {
+          "id": "batata-cheddar-bacon",
+          "nome": "Batata Cheddar & Bacon",
+          "descricao": "Batata frita coberta com cheddar cremoso e bacon crocante.",
+          "detalhes": "Nossa batata frita sequinha, coberta com creme de cheddar derretido, cubos de bacon crocante e cebolinha fresca.",
+          "imagem": "batata-cheddar-bacon.jpg",
+          "ingredientes": ["Batata frita", "Creme de cheddar", "Bacon em cubos", "Cebolinha"],
+          "opcoes": [
+            { "titulo": "Meia porção", "preco": 32 },
+            { "titulo": "Porção inteira", "preco": 52 }
+          ],
+          "selos": ["mais-pedido", "compartilhar"],
+          "tags": ["fritas", "queijo"],
+          "nota": "Perfeita para dividir"
+        },
+        {
+          "id": "onion-rings",
+          "nome": "Onion Rings",
+          "descricao": "Anéis de cebola empanados e superdourados.",
+          "detalhes": "Cebolas cortadas em anéis largos, empanadas em massa de cerveja e fritas até ficarem crocantes.",
+          "imagem": "onion-rings.jpg",
+          "ingredientes": ["Cebola", "Massa de cerveja", "Farinha panko", "Páprica", "Molho barbecue"],
+          "opcoes": [
+            { "titulo": "Meia porção", "preco": 24 },
+            { "titulo": "Porção inteira", "preco": 40 }
+          ],
+          "selos": ["vegetariano"],
+          "tags": ["anéis de cebola", "cebola empanada"],
+          "nota": "Acompanha molho barbecue"
+        },
+        {
+          "id": "frango-crispy",
+          "nome": "Frango Crispy",
+          "descricao": "Tiras de frango empanadas, crocantes e suculentas.",
+          "detalhes": "Tiras de sobrecoxa marinadas no leitelho, empanadas com farinha temperada e fritas na hora.",
+          "imagem": "frango-crispy.jpg",
+          "ingredientes": [
+            "Sobrecoxa de frango",
+            "Leitelho",
+            "Farinha temperada",
+            "Páprica defumada",
+            "Molho mostarda e mel"
+          ],
+          "opcoes": [
+            { "titulo": "Meia porção", "preco": 25 },
+            { "titulo": "Porção inteira", "preco": 45 }
+          ],
+          "tags": ["frango empanado", "tirinhas", "chicken"],
+          "nota": "Empanado na hora • Acompanha mostarda e mel"
+        },
+        {
+          "id": "costelinhas",
+          "nome": "Costelinhas BBQ",
+          "descricao": "Costelinha suína assada e pincelada com barbecue.",
+          "detalhes": "Costelinha suína assada lentamente por 6 horas até soltar do osso, finalizada na brasa com o molho barbecue da casa.",
+          "imagem": "costelinhas.jpg",
+          "ingredientes": ["Costelinha suína", "Dry rub da casa", "Molho barbecue", "Cebolinha"],
+          "opcoes": [
+            { "titulo": "5 unidades", "preco": 25 },
+            { "titulo": "10 unidades", "preco": 45 }
+          ],
+          "selos": ["chef"],
+          "tags": ["costela", "ribs", "porco"],
+          "nota": "Defumação lenta • Molho da casa"
+        },
+        {
+          "id": "asinhas-buffalo",
+          "nome": "Asinhas Buffalo",
+          "descricao": "Asinhas de frango envolvidas no molho buffalo picante.",
+          "detalhes": "Asinhas fritas e envolvidas no clássico molho buffalo, servidas com palitos de salsão e molho de queijo azul.",
+          "imagem": "asinhas-buffalo.jpg",
+          "ingredientes": ["Asinha de frango", "Molho buffalo", "Manteiga", "Salsão", "Molho de queijo azul"],
+          "opcoes": [
+            { "titulo": "8 unidades", "preco": 34 },
+            { "titulo": "16 unidades", "preco": 58 }
+          ],
+          "selos": ["picante"],
+          "tags": ["wings", "frango", "apimentado"],
+          "nota": "Picância média"
+        },
+        {
+          "id": "mandioca-frita",
+          "nome": "Mandioca Frita",
+          "descricao": "Aipim crocante por fora e cremoso por dentro.",
+          "detalhes": "Mandioca cozida até ficar macia e depois frita até dourar, finalizada com sal grosso.",
+          "imagem": "mandioca-frita.jpg",
+          "ingredientes": ["Mandioca", "Sal grosso", "Maionese de alho"],
+          "opcoes": [
+            { "titulo": "Meia porção", "preco": 22 },
+            { "titulo": "Porção inteira", "preco": 38 }
+          ],
+          "selos": ["vegetariano"],
+          "tags": ["aipim", "macaxeira"],
+          "nota": "Acompanha maionese de alho"
+        },
+        {
+          "id": "dadinho-tapioca",
+          "nome": "Dadinhos de Tapioca",
+          "descricao": "Cubinhos de tapioca com queijo coalho e geleia de pimenta.",
+          "detalhes": "Dadinhos de tapioca granulada com queijo coalho, fritos até ficarem crocantes por fora e macios por dentro.",
+          "imagem": "dadinho-tapioca.jpg",
+          "ingredientes": ["Tapioca granulada", "Queijo coalho", "Leite", "Geleia de pimenta"],
+          "opcoes": [
+            { "titulo": "12 unidades", "preco": 29 },
+            { "titulo": "24 unidades", "preco": 49 }
+          ],
+          "selos": ["vegetariano", "mais-pedido"],
+          "tags": ["dadinho", "queijo coalho"],
+          "nota": "Acompanha geleia de pimenta artesanal"
+        },
+        {
+          "id": "palitos-mussarela",
+          "nome": "Palitos de Muçarela",
+          "descricao": "Muçarela empanada que derrete e estica a cada mordida.",
+          "detalhes": "Palitos de muçarela empanados na farinha panko com orégano, fritos na hora e servidos com molho de tomate rústico.",
+          "imagem": "palitos-mussarela.jpg",
+          "ingredientes": ["Queijo muçarela", "Farinha panko", "Ovos", "Orégano", "Molho de tomate rústico"],
+          "opcoes": [
+            { "titulo": "8 unidades", "preco": 32 },
+            { "titulo": "16 unidades", "preco": 56 }
+          ],
+          "selos": ["vegetariano"],
+          "tags": ["mozzarella sticks", "queijo empanado", "mussarela"],
+          "nota": "Acompanha molho de tomate"
+        }
+      ],
+      "extras": [
+        {
+          "titulo": "Molhos extras",
+          "descricao": "Para acompanhar qualquer porção.",
+          "itens": [
+            { "nome": "Maionese da casa", "preco": 4 },
+            { "nome": "Barbecue", "preco": 4 },
+            { "nome": "Mostarda e mel", "preco": 4 },
+            { "nome": "Cheddar cremoso", "preco": 5 },
+            { "nome": "Geleia de pimenta", "preco": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hamburgueres",
+      "titulo": "Hambúrgueres",
+      "subtitulo": "Blends artesanais, pão selado na manteiga e molhos da casa.",
+      "icone": "hamburger",
+      "itens": [
+        {
+          "id": "hamburguer-thor",
+          "nome": "Hambúrguer do Trovão",
+          "descricao": "Carne suculenta, queijo derretido e molho especial.",
+          "detalhes": "Inspirado no deus do trovão, com molho especial e muito sabor: blend suculento de 180 g, queijo prato derretido e cebola crispy no pão brioche.",
+          "imagem": "hamburguer-thor.jpg",
+          "ingredientes": ["Pão brioche", "Blend bovino 180 g", "Queijo prato", "Cebola crispy", "Molho especial"],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 45 },
+            { "titulo": "2 carnes", "preco": 85 }
+          ],
+          "selos": ["chef"],
+          "tags": ["thor", "trovão", "burger"],
+          "nota": "Pão brioche • Queijo prato"
+        },
+        {
+          "id": "hamburguer-aranha",
+          "nome": "Hambúrguer do Aranha",
+          "descricao": "Suculento com queijo e molho secreto.",
+          "detalhes": "Pão preto, blend suculento de 160 g, queijo muçarela derretido, pepino agridoce e o molho secreto da casa.",
+          "imagem": "hamburguer-aranha.jpg",
+          "ingredientes": ["Pão preto", "Blend bovino 160 g", "Queijo muçarela", "Pepino agridoce", "Molho secreto"],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 45 },
+            { "titulo": "2 carnes", "preco": 85 }
+          ],
+          "tags": ["aranha", "burger"],
+          "nota": "Pepino agridoce • Molho secreto"
+        },
+        {
+          "id": "hulk-burger",
+          "nome": "Hulk Burger",
+          "descricao": "Gigante e saboroso pra ficar grandão.",
+          "detalhes": "Combinação monstruosa de blend bovino, queijo cheddar, bacon crocante, onion rings e molho especial no pão gigante com gergelim.",
+          "imagem": "hulk-burger.jpg",
+          "ingredientes": [
+            "Pão gigante com gergelim",
+            "Blend bovino 160 g",
+            "Queijo cheddar",
+            "Bacon",
+            "Onion rings",
+            "Alface",
+            "Molho especial"
+          ],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 45 },
+            { "titulo": "2 carnes", "preco": 85 }
+          ],
+          "selos": ["mais-pedido"],
+          "tags": ["hulk", "gigante", "burger"],
+          "nota": "Onion rings • Bacon crocante"
+        },
+        {
+          "id": "classico",
+          "nome": "Steak Clássico",
+          "descricao": "O burger que começou tudo: blend, cheddar e salada fresquinha.",
+          "detalhes": "Blend bovino de 160 g grelhado na chapa, cheddar derretido, alface americana, tomate, cebola roxa e picles no pão brioche com maionese da casa.",
+          "imagem": "classico.jpg",
+          "ingredientes": [
+            "Pão brioche",
+            "Blend bovino 160 g",
+            "Queijo cheddar",
+            "Alface americana",
+            "Tomate",
+            "Cebola roxa",
+            "Picles",
+            "Maionese da casa"
+          ],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 32 },
+            { "titulo": "Duplo", "preco": 44 }
+          ],
+          "selos": ["mais-pedido"],
+          "tags": ["cheeseburger", "x-salada", "burger"],
+          "nota": "Pão brioche • Maionese da casa"
+        },
+        {
+          "id": "cheddar-bacon",
+          "nome": "Cheddar Bacon",
+          "descricao": "Cheddar cremoso em dobro e muito bacon crocante.",
+          "detalhes": "Blend de 160 g, fatias de cheddar inglês, creme de cheddar, tiras de bacon crocante e cebola caramelizada no pão australiano.",
+          "imagem": "cheddar-bacon.jpg",
+          "ingredientes": [
+            "Pão australiano",
+            "Blend bovino 160 g",
+            "Cheddar inglês",
+            "Creme de cheddar",
+            "Bacon",
+            "Cebola caramelizada"
+          ],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 38 },
+            { "titulo": "Duplo", "preco": 52 }
+          ],
+          "tags": ["x-bacon", "burger"],
+          "nota": "Pão australiano • Dobro de cheddar"
+        },
+        {
+          "id": "smash-duplo",
+          "nome": "Smash Duplo",
+          "descricao": "Carnes prensadas na chapa, bordas crocantes e queijo derretido.",
+          "detalhes": "Smash patties de 90 g prensadas na chapa bem quente para criar a crosta perfeita, com queijo prato, cebola na chapa, picles e molho especial.",
+          "imagem": "smash-duplo.jpg",
+          "ingredientes": [
+            "Pão de batata",
+            "Smash patties de 90 g",
+            "Queijo prato",
+            "Cebola na chapa",
+            "Picles",
+            "Molho especial"
+          ],
+          "opcoes": [
+            { "titulo": "Duplo (2 carnes)", "preco": 36 },
+            { "titulo": "Triplo (3 carnes)", "preco": 46 }
+          ],
+          "selos": ["novidade"],
+          "tags": ["smash", "burger"],
+          "nota": "Crosta crocante • Molho especial"
+        },
+        {
+          "id": "steak-bacon",
+          "nome": "Steak Bacon",
+          "descricao": "Carne, bacon crocante e molho especial.",
+          "detalhes": "Sabor clássico com bacon crocante: blend de 160 g, queijo prato, tiras de bacon e molho da casa no pão brioche.",
+          "imagem": "steak-bacon.jpg",
+          "ingredientes": ["Pão brioche", "Blend bovino 160 g", "Queijo prato", "Bacon", "Molho da casa"],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 35 },
+            { "titulo": "2 carnes", "preco": 65 }
+          ],
+          "tags": ["bacon", "burger"],
+          "nota": "Molho da casa • Pão brioche"
+        },
+        {
+          "id": "steak-onion-rings",
+          "nome": "Steak Onion Rings",
+          "descricao": "Hambúrguer com onion rings crocantes.",
+          "detalhes": "Suculento com onion rings crocantes: blend de 160 g, cheddar, bacon, onion rings, alface, tomate e molho barbecue.",
+          "imagem": "steak-onion-rings.jpg",
+          "ingredientes": [
+            "Pão com gergelim",
+            "Blend bovino 160 g",
+            "Queijo cheddar",
+            "Bacon",
+            "Onion rings",
+            "Alface",
+            "Tomate",
+            "Molho barbecue"
+          ],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 40 },
+            { "titulo": "2 carnes", "preco": 75 }
+          ],
+          "tags": ["cebola", "burger"],
+          "nota": "Onion crocante • Molho especial"
+        },
+        {
+          "id": "bbq-defumado",
+          "nome": "BBQ Defumado",
+          "descricao": "Blend com costela desfiada, barbecue e cebola crispy.",
+          "detalhes": "Blend de 160 g coberto com costela bovina desfiada e defumada por 10 horas, queijo provolone, cebola crispy e molho barbecue da casa.",
+          "imagem": "bbq-defumado.jpg",
+          "ingredientes": [
+            "Pão brioche",
+            "Blend bovino 160 g",
+            "Costela desfiada defumada",
+            "Queijo provolone",
+            "Cebola crispy",
+            "Molho barbecue"
+          ],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 46 },
+            { "titulo": "Duplo", "preco": 62 }
+          ],
+          "selos": ["chef"],
+          "tags": ["barbecue", "costela", "burger"],
+          "nota": "Costela defumada na casa"
+        },
+        {
+          "id": "gorgonzola",
+          "nome": "Gorgonzola & Cebola",
+          "descricao": "Gorgonzola cremoso, cebola caramelizada e rúcula.",
+          "detalhes": "Blend de 160 g ao ponto, creme de gorgonzola, cebola caramelizada no vinho tinto e rúcula fresca no pão brioche.",
+          "imagem": "gorgonzola.jpg",
+          "ingredientes": ["Pão brioche", "Blend bovino 160 g", "Creme de gorgonzola", "Cebola caramelizada", "Rúcula"],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 44 },
+            { "titulo": "Duplo", "preco": 58 }
+          ],
+          "tags": ["queijo azul", "gourmet", "burger"],
+          "nota": "Para quem ama queijos intensos"
+        },
+        {
+          "id": "chicken-crispy",
+          "nome": "Chicken Crispy",
+          "descricao": "Sobrecoxa empanada crocante, coleslaw e maionese de páprica.",
+          "detalhes": "Sobrecoxa marinada no leitelho e empanada na hora, com salada coleslaw, picles e maionese de páprica defumada no pão de batata.",
+          "imagem": "chicken-crispy.jpg",
+          "ingredientes": ["Pão de batata", "Sobrecoxa empanada", "Coleslaw", "Picles", "Maionese de páprica defumada"],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 34 },
+            { "titulo": "Duplo", "preco": 46 }
+          ],
+          "tags": ["frango", "chicken", "burger"],
+          "nota": "Frango empanado na hora"
+        },
+        {
+          "id": "steak-salad",
+          "nome": "Steak Salad",
+          "descricao": "Opção leve e saborosa.",
+          "detalhes": "Ideal para quem prefere algo mais leve: blend grelhado, mix de folhas, tomate, cebola roxa, pepino e molho de iogurte com ervas.",
+          "imagem": "steak-salad.jpg",
+          "ingredientes": [
+            "Pão integral",
+            "Blend bovino 160 g",
+            "Mix de folhas",
+            "Tomate",
+            "Cebola roxa",
+            "Pepino",
+            "Molho de iogurte com ervas"
+          ],
+          "opcoes": [
+            { "titulo": "1 carne", "preco": 35 },
+            { "titulo": "2 carnes", "preco": 65 }
+          ],
+          "tags": ["salada", "leve", "burger"],
+          "nota": "Folhas frescas • Molho leve"
+        },
+        {
+          "id": "veggie",
+          "nome": "Veggie de Grão-de-Bico",
+          "descricao": "Hambúrguer de grão-de-bico com guacamole e tomate assado.",
+          "detalhes": "Hambúrguer de grão-de-bico temperado com cominho e ervas, guacamole, tomate assado, cebola roxa e mix de folhas no pão australiano.",
+          "imagem": "veggie.jpg",
+          "ingredientes": [
+            "Pão australiano",
+            "Hambúrguer de grão-de-bico",
+            "Guacamole",
+            "Tomate assado",
+            "Cebola roxa",
+            "Mix de folhas"
+          ],
+          "opcoes": [
+            { "titulo": "Simples", "preco": 36 },
+            { "titulo": "Duplo", "preco": 48 }
+          ],
+          "selos": ["vegetariano", "novidade"],
+          "tags": ["vegano", "sem carne", "plant based", "burger"],
+          "nota": "100% vegetariano"
+        }
+      ],
+      "extras": [
+        {
+          "titulo": "Turbine seu burger",
+          "descricao": "Adicione a qualquer hambúrguer.",
+          "itens": [
+            { "nome": "Bacon", "preco": 6 },
+            { "nome": "Cheddar", "preco": 5 },
+            { "nome": "Ovo", "preco": 4 },
+            { "nome": "Cebola caramelizada", "preco": 5 },
+            { "nome": "Onion rings (3 un.)", "preco": 7 },
+            { "nome": "Jalapeño", "preco": 4 },
+            { "nome": "Blend extra 160 g", "preco": 15 }
+          ]
+        },
+        {
+          "titulo": "Vire combo",
+          "descricao": "Batata frita (meia porção) + refrigerante lata.",
+          "itens": [{ "nome": "Combo", "preco": 19 }]
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "titulo": "Bebidas",
+      "subtitulo": "Geladas, naturais e drinks da casa.",
+      "icone": "cup-soda",
+      "itens": [
+        {
+          "id": "refrigerante",
+          "nome": "Refrigerantes",
+          "descricao": "Coca-Cola, Coca-Cola Zero, Guaraná Antarctica ou Sprite.",
+          "detalhes": "Servidos bem gelados, com gelo e limão se preferir.",
+          "imagem": "refrigerantes.jpg",
+          "opcoes": [
+            { "titulo": "Lata 350 ml", "preco": 8 },
+            { "titulo": "Garrafa 600 ml", "preco": 12 }
+          ],
+          "tags": ["refri", "coca", "guaraná", "sprite", "soda"],
+          "nota": "Geladinhos e refrescantes"
+        },
+        {
+          "id": "sucos-naturais",
+          "nome": "Sucos Naturais",
+          "descricao": "Laranja, abacaxi com hortelã, maracujá ou limão.",
+          "detalhes": "Feitos na hora com frutas selecionadas, sem conservantes. Peça com ou sem açúcar.",
+          "imagem": "sucos.jpg",
+          "ingredientes": ["Frutas frescas", "Gelo", "Açúcar (opcional)"],
+          "opcoes": [
+            { "titulo": "Copo 300 ml", "preco": 10 },
+            { "titulo": "Copo 500 ml", "preco": 15 }
+          ],
+          "tags": ["suco", "laranja", "natural"],
+          "nota": "Feitos na hora"
+        },
+        {
+          "id": "limonada-suica",
+          "nome": "Limonada Suíça",
+          "descricao": "Limão batido com casca, leite condensado e muito gelo.",
+          "detalhes": "Cremosa e refrescante: limão taiti batido com casca, leite condensado e gelo, coada na hora.",
+          "imagem": "limonada-suica.jpg",
+          "ingredientes": ["Limão taiti", "Leite condensado", "Açúcar", "Gelo"],
+          "opcoes": [
+            { "titulo": "Copo 400 ml", "preco": 14 },
+            { "titulo": "Jarra 1 litro", "preco": 28 }
+          ],
+          "selos": ["mais-pedido"],
+          "tags": ["limonada", "limão"],
+          "nota": "Cremosa e refrescante"
+        },
+        {
+          "id": "mate-gelado",
+          "nome": "Mate Gelado com Limão",
+          "descricao": "O clássico das praias do Rio, gelado e levemente adoçado.",
+          "detalhes": "Chá mate tostado preparado na casa, servido bem gelado com limão espremido na hora.",
+          "imagem": "mate.jpg",
+          "ingredientes": ["Chá mate tostado", "Limão", "Açúcar", "Gelo"],
+          "opcoes": [
+            { "titulo": "Copo 400 ml", "preco": 9 },
+            { "titulo": "Jarra 1 litro", "preco": 20 }
+          ],
+          "tags": ["chá", "mate", "ice tea"],
+          "nota": "Receita carioca"
+        },
+        {
+          "id": "agua",
+          "nome": "Água Mineral",
+          "descricao": "Com ou sem gás, sempre gelada.",
+          "imagem": "agua.jpg",
+          "opcoes": [
+            { "titulo": "Sem gás 500 ml", "preco": 5 },
+            { "titulo": "Com gás 500 ml", "preco": 6 }
+          ],
+          "tags": ["água", "agua com gas"]
+        },
+        {
+          "id": "cervejas",
+          "nome": "Cervejas",
+          "descricao": "Long necks geladas e cervejas artesanais.",
+          "detalhes": "Pilsen, IPA e Weiss de cervejarias artesanais parceiras, servidas trincando.",
+          "imagem": "cerveja.jpg",
+          "opcoes": [
+            { "titulo": "Long neck 355 ml", "preco": 12 },
+            { "titulo": "Artesanal Weiss 500 ml", "preco": 22 },
+            { "titulo": "Artesanal IPA 500 ml", "preco": 24 }
+          ],
+          "selos": ["alcoolico"],
+          "tags": ["cerveja", "chopp", "ipa", "breja"],
+          "nota": "Beba com moderação"
+        },
+        {
+          "id": "caipirinha",
+          "nome": "Caipirinha",
+          "descricao": "Bebida típica brasileira feita com cachaça, limão e açúcar.",
+          "detalhes": "Cachaça artesanal mineira, frutas frescas maceradas na hora, açúcar e gelo picado. Também com vodka ou saquê.",
+          "imagem": "caipirinha.jpg",
+          "ingredientes": ["Cachaça artesanal", "Limão taiti", "Açúcar", "Gelo picado"],
+          "opcoes": [
+            { "titulo": "Limão 500 ml", "preco": 18 },
+            { "titulo": "Morango 500 ml", "preco": 20 },
+            { "titulo": "Maracujá 500 ml", "preco": 20 }
+          ],
+          "selos": ["alcoolico"],
+          "tags": ["drink", "cachaça", "caipiroska"],
+          "nota": "Beba com moderação!"
+        },
+        {
+          "id": "gin-tonica",
+          "nome": "Gin Tônica",
+          "descricao": "Gin, água tônica, limão-siciliano e especiarias.",
+          "detalhes": "Servido na taça com bastante gelo, rodelas de limão-siciliano, zimbro e alecrim.",
+          "imagem": "gin-tonica.jpg",
+          "ingredientes": ["Gin", "Água tônica", "Limão-siciliano", "Zimbro", "Alecrim", "Gelo"],
+          "opcoes": [
+            { "titulo": "Clássico", "preco": 28 },
+            { "titulo": "Frutas vermelhas", "preco": 32 }
+          ],
+          "selos": ["alcoolico", "novidade"],
+          "tags": ["drink", "gin"],
+          "nota": "Beba com moderação"
+        }
+      ]
+    },
+    {
+      "id": "sobremesas",
+      "titulo": "Sobremesas",
+      "subtitulo": "Para fechar com chave de ouro.",
+      "icone": "ice-cream-cone",
+      "itens": [
+        {
+          "id": "brownie",
+          "nome": "Brownie com Sorvete",
+          "descricao": "Brownie quente servido com sorvete de baunilha.",
+          "detalhes": "Brownie de chocolate meio amargo, casquinha crocante e centro molhadinho, servido quente com sorvete de baunilha e calda de chocolate.",
+          "imagem": "brownie.jpg",
+          "ingredientes": [
+            "Chocolate meio amargo",
+            "Manteiga",
+            "Ovos",
+            "Açúcar mascavo",
+            "Nozes",
+            "Sorvete de baunilha",
+            "Calda de chocolate"
+          ],
+          "opcoes": [{ "titulo": "1 porção", "preco": 20 }],
+          "selos": ["mais-pedido"],
+          "tags": ["chocolate", "doce"],
+          "nota": "Delicioso e cremoso"
+        },
+        {
+          "id": "milkshake",
+          "nome": "Milkshakes",
+          "descricao": "Chocolate, morango, Ovomaltine ou doce de leite.",
+          "detalhes": "Milkshake cremoso batido com sorvete artesanal, finalizado com chantilly e calda do sabor escolhido.",
+          "imagem": "milkshake.jpg",
+          "ingredientes": ["Sorvete artesanal", "Leite", "Chantilly", "Calda do sabor escolhido"],
+          "opcoes": [
+            { "titulo": "300 ml", "preco": 15 },
+            { "titulo": "500 ml", "preco": 20 }
+          ],
+          "selos": ["mais-pedido"],
+          "tags": ["shake", "sorvete", "ovomaltine"],
+          "nota": "Cremoso e delicioso"
+        },
+        {
+          "id": "petit-gateau",
+          "nome": "Petit Gâteau",
+          "descricao": "Bolinho de chocolate com recheio cremoso e sorvete.",
+          "detalhes": "Bolinho de chocolate assado na hora, com casquinha firme e centro derretido, servido com sorvete de creme e frutas vermelhas.",
+          "imagem": "petit-gateau.jpg",
+          "ingredientes": ["Chocolate belga", "Manteiga", "Ovos", "Açúcar", "Sorvete de creme", "Frutas vermelhas"],
+          "opcoes": [{ "titulo": "1 unidade", "preco": 26 }],
+          "selos": ["chef"],
+          "tags": ["chocolate", "petit gateau"],
+          "nota": "Assado na hora (cerca de 12 min)"
+        },
+        {
+          "id": "churros",
+          "nome": "Churros com Doce de Leite",
+          "descricao": "Churros crocantes com açúcar e canela e doce de leite para mergulhar.",
+          "detalhes": "Churros fritos na hora, passados no açúcar com canela e servidos com potinho de doce de leite cremoso.",
+          "imagem": "churros.jpg",
+          "ingredientes": ["Massa de churros", "Açúcar", "Canela", "Doce de leite"],
+          "opcoes": [
+            { "titulo": "6 unidades", "preco": 18 },
+            { "titulo": "12 unidades", "preco": 32 }
+          ],
+          "selos": ["compartilhar"],
+          "tags": ["churro", "doce de leite"],
+          "nota": "Também com calda de chocolate"
+        },
+        {
+          "id": "cheesecake",
+          "nome": "Cheesecake de Frutas Vermelhas",
+          "descricao": "Cremoso, com base crocante e calda de frutas vermelhas.",
+          "detalhes": "Cheesecake assado de cream cheese sobre base de biscoito amanteigado, coberto com calda caseira de frutas vermelhas.",
+          "imagem": "cheesecake.jpg",
+          "ingredientes": ["Cream cheese", "Biscoito amanteigado", "Manteiga", "Açúcar", "Frutas vermelhas"],
+          "opcoes": [{ "titulo": "1 fatia", "preco": 22 }],
+          "tags": ["torta", "frutas vermelhas"],
+          "nota": "Feito na casa"
+        },
+        {
+          "id": "pudim",
+          "nome": "Pudim de Leite",
+          "descricao": "O clássico da vovó, lisinho e com calda de caramelo.",
+          "detalhes": "Pudim de leite condensado sem furinhos, cozido em banho-maria e coberto com calda de caramelo.",
+          "imagem": "pudim.jpg",
+          "ingredientes": ["Leite condensado", "Leite", "Ovos", "Açúcar caramelizado"],
+          "opcoes": [{ "titulo": "1 fatia", "preco": 15 }],
+          "tags": ["pudim", "caramelo"],
+          "nota": "Receita de família"
+        },
+        {
+          "id": "sorvete",
+          "nome": "Taça de Sorvete",
+          "descricao": "Bolas de sorvete com calda quente e farofa crocante.",
+          "detalhes": "Escolha os sabores entre creme, chocolate, morango e doce de leite, com calda quente, farofa de castanhas e chantilly.",
+          "imagem": "sorvete.jpg",
+          "ingredientes": ["Sorvete artesanal", "Calda de chocolate ou caramelo", "Farofa de castanhas", "Chantilly"],
+          "opcoes": [
+            { "titulo": "2 bolas", "preco": 16 },
+            { "titulo": "3 bolas", "preco": 21 }
+          ],
+          "tags": ["sorvete", "sundae", "taça"],
+          "nota": "Sabores do dia"
+        }
+      ]
+    }
+  ]
+}

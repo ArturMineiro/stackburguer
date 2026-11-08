@@ -1,0 +1,40 @@
+---
+/**
+ * Layout das páginas de impressão (/imprimir/*). Elas existem só para gerar o
+ * PDF do cardápio, o PDF dos cartões de mesa e a imagem de prévia do link —
+ * scripts/generate-assets.ts as converte e depois remove do site publicado.
+ */
+import { Font } from 'astro:assets';
+import IconSprite from '../components/IconSprite.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-display" preload />
+  </head>
+  <body class="print-body">
+    <IconSprite />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .print-body {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+</style>

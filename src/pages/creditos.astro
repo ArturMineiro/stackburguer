@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../config/site.ts';
+import { credits } from '../data/credits.ts';
+---
+
+<BaseLayout title="Créditos das fotos" description={`Créditos das fotos usadas no cardápio digital da ${SITE.name}.`}>
+  <main class="credits container">
+    <a class="back" href="/">
+      <Icon name="chevron-right" size={18} /> Voltar ao cardápio
+    </a>
+    <h1 class="title">Créditos das fotos</h1>
+    <p class="lead">
+      As imagens do cardápio são ilustrativas. Agradecemos aos fotógrafos abaixo — as fotos com licença Creative Commons
+      foram recortadas, redimensionadas e comprimidas para o site.
+    </p>
+    <ul class="list" role="list">
+      {credits.map((credito) => (
+        <li>
+          <p class="use">{credito.uso}</p>
+          <p>
+            Foto de{' '}
+            <a href={credito.url} target="_blank" rel="noopener noreferrer">
+              {credito.autor}
+            </a>{' '}
+            ({credito.fonte}) ·{' '}
+            <a href={credito.licencaUrl} target="_blank" rel="noopener noreferrer license">
+              {credito.licenca}
+            </a>
+            {credito.alteracoes && <> · {credito.alteracoes}</>}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  .credits {
+    padding-top: calc(2rem + env(safe-area-inset-top));
+    padding-bottom: 3rem;
+    max-width: 52rem;
+  }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2.75rem;
+    color: var(--brand-600);
+    font-weight: 750;
+    text-decoration: none;
+  }
+  .back :global(svg) {
+    transform: rotate(180deg);
+  }
+  .title {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--brand-800);
+  }
+  .lead {
+    margin-top: 0.5rem;
+    color: var(--ink-700);
+  }
+  .list {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .list li {
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    font-size: 0.95rem;
+    color: var(--ink-700);
+  }
+  .use {
+    color: var(--brand-800);
+    font-weight: 800;
+  }
+  .list a {
+    color: var(--accent-700);
+    font-weight: 650;
+  }
+</style>

@@ -1,0 +1,237 @@
+---
+import { Picture } from 'astro:assets';
+import heroImage from '../assets/brand/hero.jpg';
+import Logo from '../assets/brand/logo.svg';
+import Icon from './Icon.astro';
+import { DOWNLOADS, SITE } from '../config/site.ts';
+import { cardapio } from '../data/menu.ts';
+import { countItems } from '../lib/menu.ts';
+import { SIZES, widthsFor } from '../lib/images.ts';
+
+const total = countItems(cardapio);
+---
+
+<header class="hero" id="topo">
+  <div class="hero-media" aria-hidden="true">
+    <Picture
+      src={heroImage}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={widthsFor(heroImage, [640, 960, 1280, 1920, 2560])}
+      sizes={SIZES.hero}
+      loading="eager"
+      fetchpriority="high"
+      class="hero-img"
+    />
+  </div>
+
+  <div class="hero-content container">
+    <p class="hero-table" data-table-welcome hidden>
+      <Icon name="utensils" size={16} />{' '}
+      <span>
+        Você está na <strong data-table-number>mesa</strong>
+      </span>
+    </p>
+    <Logo class="hero-logo" width={76} height={76} aria-hidden="true" />
+    <p class="hero-kicker">Cardápio digital</p>
+    <h1 class="hero-title">{SITE.name}</h1>
+    <p class="hero-tagline">{SITE.tagline}</p>
+
+    <ul class="hero-facts" role="list">
+      <li>
+        <Icon name="clock" size={18} /> Terça a domingo
+      </li>
+      <li>
+        <Icon name="map-pin" size={18} /> {SITE.address.city} · {SITE.address.region}
+      </li>
+      <li>
+        <Icon name="utensils" size={18} /> {total} itens
+      </li>
+    </ul>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cardapio">
+        <Icon name="chevron-down" /> Ver cardápio
+      </a>
+      <a class="btn btn-ghost" href={DOWNLOADS.menuPdf.path} download={DOWNLOADS.menuPdf.filename}>
+        <Icon name="file-down" /> Baixar cardápio (PDF)
+      </a>
+    </div>
+  </div>
+
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 48c240 44 480-40 720-8s480 52 720 8v42H0z"></path>
+  </svg>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: min(82svh, 44rem);
+    padding: calc(2.5rem + env(safe-area-inset-top)) 0 5rem;
+    color: #fff;
+    background: var(--brand-900);
+    overflow: hidden;
+  }
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .hero-media :global(picture),
+  .hero-media :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+  .hero-media :global(img) {
+    object-fit: cover;
+    object-position: 58% 40%;
+  }
+  .hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgb(11 33 26 / 0.25) 0%, rgb(11 33 26 / 0.45) 35%, rgb(11 33 26 / 0.95) 100%),
+      radial-gradient(120% 70% at 50% 100%, rgb(234 125 23 / 0.18), transparent 60%);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-table {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent-600);
+    color: var(--ink-900);
+    font-size: 0.9rem;
+    font-weight: 650;
+    box-shadow: 0 8px 22px rgb(0 0 0 / 0.25);
+  }
+  .hero-logo {
+    width: 4.25rem;
+    height: 4.25rem;
+    filter: drop-shadow(0 10px 24px rgb(0 0 0 / 0.35));
+  }
+  .hero-kicker {
+    margin-top: 1rem;
+    color: var(--accent-400);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    margin-top: 0.15rem;
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    text-shadow: 0 6px 30px rgb(0 0 0 / 0.35);
+  }
+  .hero-tagline {
+    max-width: 30ch;
+    margin-top: 0.6rem;
+    color: rgb(255 255 255 / 0.88);
+    font-size: var(--step-1);
+  }
+  .hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.1rem;
+    margin-top: 1.1rem;
+    color: rgb(255 255 255 / 0.85);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .hero-facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero-facts :global(svg) {
+    color: var(--accent-400);
+  }
+  .hero-actions {
+    display: grid;
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: 1.6rem;
+  }
+
+  .hero-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(2.2rem, 5vw, 4.5rem);
+    fill: var(--cream-100);
+  }
+
+  @media (min-width: 40rem) {
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      align-items: center;
+      min-height: min(86vh, 50rem);
+      padding-bottom: 6.5rem;
+    }
+    /* Foto à direita do texto, fundindo com o verde da marca. */
+    /* Termina em --brand-950 exatamente onde a foto começa (30%): sem emenda. */
+    .hero {
+      background: linear-gradient(90deg, var(--brand-800) 0%, var(--brand-950) 30%);
+    }
+    .hero-media {
+      left: 30%;
+    }
+    .hero-media::after {
+      background:
+        linear-gradient(90deg, var(--brand-950) 0%, rgb(11 33 26 / 0.7) 18%, rgb(11 33 26 / 0) 45%),
+        linear-gradient(0deg, rgb(11 33 26 / 0.6) 0%, transparent 30%),
+        linear-gradient(180deg, rgb(11 33 26 / 0.45) 0%, transparent 25%);
+    }
+    .hero-media :global(img) {
+      object-position: 55% 60%;
+    }
+    .hero-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .hero-facts,
+    .hero-actions {
+      justify-content: flex-start;
+    }
+  }
+
+  /* Celular deitado: hero mais baixo para o cardápio aparecer logo. */
+  @media (orientation: landscape) and (max-height: 32rem) {
+    .hero {
+      min-height: auto;
+      padding-top: calc(1.5rem + env(safe-area-inset-top));
+    }
+    .hero-logo {
+      display: none;
+    }
+  }
+</style>

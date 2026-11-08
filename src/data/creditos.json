@@ -1,0 +1,364 @@
+[
+  {
+    "foto": "brand/hero.jpg",
+    "uso": "Capa do site e do PDF",
+    "autor": "Carlos Davila Cepeda",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-with-patty-and-lettuce-yVFr_D_PxkQ",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/bruschetta.jpg",
+    "uso": "Bruschetta",
+    "autor": "Chris Tweten",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/olpNKfEqvwA",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/pastel.jpg",
+    "uso": "Pastéis Sortidos",
+    "autor": "Jeferson Santu",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/02y--2v_IWg",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/batata-frita.jpg",
+    "uso": "Batata Frita",
+    "autor": "Mitchell Luo",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/ChXHveqrb28",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/batata-cheddar-bacon.jpg",
+    "uso": "Batata Cheddar & Bacon",
+    "autor": "Jonathan Borba",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/I-cgCz5DUi4",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/onion-rings.jpg",
+    "uso": "Onion Rings",
+    "autor": "Diego Arenas de Rodrigo",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/golden-onion-rings-with-dipping-sauces-and-sausages-Yy5wn2jnjMw",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/costelinhas.jpg",
+    "uso": "Costelinhas BBQ",
+    "autor": "Alexandru-Bogdan Ghita",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/roasted-ribs-with-sliced-tomatoes-and-potatoes-UeYkqQh4PoI",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/asinhas-buffalo.jpg",
+    "uso": "Asinhas Buffalo",
+    "autor": "Snappr",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/-7xpgPVH8bw",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/mandioca-frita.jpg",
+    "uso": "Mandioca Frita",
+    "autor": "Bdieu",
+    "fonte": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Friedmanioc.jpg",
+    "licenca": "CC BY 3.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "alteracoes": "Recortada, redimensionada e comprimida"
+  },
+  {
+    "foto": "cardapio/dadinho-tapioca.jpg",
+    "uso": "Dadinhos de Tapioca",
+    "autor": "loustejskal.com (Lou Stejskal)",
+    "fonte": "Flickr",
+    "url": "https://www.flickr.com/photos/loustejskal/41828848085/",
+    "licenca": "CC BY 2.0",
+    "licencaUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "alteracoes": "Recortada, redimensionada e comprimida"
+  },
+  {
+    "foto": "cardapio/palitos-mussarela.jpg",
+    "uso": "Palitos de Muçarela",
+    "autor": "Shoeib Abolhassani",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/several-breaded-mozzarella-sticks-with-melted-cheese-pTwN-C1w1Vc",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/frango-crispy.jpg",
+    "uso": "Frango Crispy",
+    "autor": "Léo Roza",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/fried-chicken-with-dip-P_z_xlMGuEk",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/classico.jpg",
+    "uso": "Steak Clássico",
+    "autor": "Ilya Mashkov",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/hamburger-with-vegetables-on-wooden-surface-mkVa2hLJgnI",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/cheddar-bacon.jpg",
+    "uso": "Cheddar Bacon",
+    "autor": "amirali mirhashemian",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-with-cheese-and-lettuce-9Bqiusimq6M",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/smash-duplo.jpg",
+    "uso": "Smash Duplo",
+    "autor": "Eiliv Aceron",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/double-cheeseburger-with-pickles-pu6b4yIlQF4",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/hamburguer-thor.jpg",
+    "uso": "Hambúrguer do Trovão",
+    "autor": "Arvid Skywalker",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/a-cheeseburger-on-a-black-plate-on-a-cooling-rack-knraRhF5aKA",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/hamburguer-aranha.jpg",
+    "uso": "Hambúrguer do Aranha",
+    "autor": "David Foodphototasty",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-with-cheese-and-lettuce-X92WLoaQ1_o",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/hulk-burger.jpg",
+    "uso": "Hulk Burger",
+    "autor": "Jepsoy Sarmiento",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/a-large-hamburger-sitting-on-top-of-a-wooden-cutting-board-35P0CL07cGE",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/bbq-defumado.jpg",
+    "uso": "BBQ Defumado",
+    "autor": "Israel Albornoz",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-on-brown-wooden-table-YFG2_ZYoMWQ",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/gorgonzola.jpg",
+    "uso": "Gorgonzola & Cebola",
+    "autor": "Francesco La Corte",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/a-hamburger-sitting-on-top-of-a-wooden-table-iiAFgw9gtvU",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/chicken-crispy.jpg",
+    "uso": "Chicken Crispy",
+    "autor": "David Foodphototasty",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/VFVnZfogE7s",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/veggie.jpg",
+    "uso": "Veggie de Grão-de-Bico",
+    "autor": "Lefteris kallergis",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/selective-focus-photography-of-hamburger-with-sliced-tomatoes-and-vegetables-_TLKIVSW6Do",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/steak-bacon.jpg",
+    "uso": "Steak Bacon",
+    "autor": "David Foodphototasty",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-with-lettuce-and-tomato-E94j3rMcxlw",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/steak-onion-rings.jpg",
+    "uso": "Steak Onion Rings",
+    "autor": "Abstral Official",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/burger-with-patty-and-lettuce-g1DXfUjn6jk",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/steak-salad.jpg",
+    "uso": "Steak Salad",
+    "autor": "amirali mirhashemian",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/hamburger-with-patty-uhgJYtrO3fY",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/refrigerantes.jpg",
+    "uso": "Refrigerantes",
+    "autor": "Qasim Malick",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/i597Mg_WSPw",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/sucos.jpg",
+    "uso": "Sucos Naturais",
+    "autor": "Mateusz Feliksik",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/TmOGarNOGFs",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/limonada-suica.jpg",
+    "uso": "Limonada Suíça",
+    "autor": "Dhiren maru",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/-oSeTXBGt58",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/mate.jpg",
+    "uso": "Mate Gelado com Limão",
+    "autor": "Mae Mu",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/clear-drinking-glass-with-tea-kbch-i63YTg",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/agua.jpg",
+    "uso": "Água Mineral",
+    "autor": "Brendan Church",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/person-holding-bottle-pouring-water-on-drinking-glass-4bFKX8G419Q",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/cerveja.jpg",
+    "uso": "Cervejas",
+    "autor": "engin akyurt",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/3ORoQEJY9LA",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/caipirinha.jpg",
+    "uso": "Caipirinha",
+    "autor": "Gabriel Petry",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/clear-drinking-glass-with-sliced-lemon-and-salt-dtTp-VlaUTc",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/gin-tonica.jpg",
+    "uso": "Gin Tônica",
+    "autor": "Camara Negra",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/a-glass-of-wine-with-lemons-and-a-rosemary-sprig-PmSk3XgSsDI",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/brownie.jpg",
+    "uso": "Brownie com Sorvete",
+    "autor": "Shivansh Sethi",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/chocolate-cake-with-white-icing-on-white-ceramic-plate-dKT6Q7q2UKs",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/petit-gateau.jpg",
+    "uso": "Petit Gâteau",
+    "autor": "American Heritage Chocolate",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/8lPKzLSWNgM",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/churros.jpg",
+    "uso": "Churros com Doce de Leite",
+    "autor": "July Brenda Gonzales Callapaza",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/fD9oz3LA944",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/cheesecake.jpg",
+    "uso": "Cheesecake de Frutas Vermelhas",
+    "autor": "Lynda Kechiche",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/2tjb7x9iwNE",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/sorvete.jpg",
+    "uso": "Taça de Sorvete",
+    "autor": "Melody Zimmerman",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/a-glass-of-ice-cream-topped-with-chocolate-and-marshmallows-lNucH3OumtI",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/pudim.jpg",
+    "uso": "Pudim de Leite",
+    "autor": "Felippe Lopes",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/TqPdzQ00I0U",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  },
+  {
+    "foto": "cardapio/milkshake.jpg",
+    "uso": "Milkshakes",
+    "autor": "Knight Duong",
+    "fonte": "Unsplash",
+    "url": "https://unsplash.com/photos/chocolate-ice-cream-on-brown-wooden-coaster-BjUq2rdl9_s",
+    "licenca": "Licença Unsplash",
+    "licencaUrl": "https://unsplash.com/license"
+  }
+]
