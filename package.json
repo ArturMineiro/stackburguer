@@ -1,0 +1,49 @@
+{
+  "name": "stackburguer",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Cardápio digital da Steak Burger: site estático (Astro), PDF do cardápio para download e kit de QR Codes para as mesas.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/generate-assets.ts",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "icons": "node scripts/generate-icons.ts",
+    "verify": "npm run lint && npm run format:check && npm run check && npm test && npm run build && npm run test:e2e",
+    "schema": "node scripts/generate-schema.ts"
+  },
+  "dependencies": {
+    "astro": "~7.3.8",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^22.20.5",
+    "@types/qrcode": "^1.5.6",
+    "eslint": "^10.14.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
+    "globals": "^17.14.0",
+    "jsqr": "^1.4.0",
+    "pdf-lib": "^1.17.1",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "sharp": "^0.35.5",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
+  }
+}

@@ -1,6 +1,10 @@
 {
-    "recommendations": [
-        "ritwickdey.liveserver"
-        
-    ]
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "ms-playwright.playwright",
+    "vitest.explorer"
+  ]
 }

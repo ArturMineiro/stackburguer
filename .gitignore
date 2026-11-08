@@ -1,0 +1,25 @@
+# dependências
+node_modules/
+
+# build
+dist/
+.astro/
+
+# testes
+test-results/
+playwright-report/
+blob-report/
+coverage/
+
+# ambiente
+.env
+.env.*
+!.env.example
+
+# sistema / editores
+.DS_Store
+Thumbs.db
+*.log
+
+# capturas geradas por scripts/screenshots.ts
+screenshots/

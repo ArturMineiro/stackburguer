@@ -1,0 +1,12 @@
+dist
+.astro
+node_modules
+package-lock.json
+test-results
+playwright-report
+screenshots
+src/assets
+public/*.png
+*.md
+src/data/cardapio.schema.json
+docs

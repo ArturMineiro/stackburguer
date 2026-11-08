@@ -1,0 +1,11 @@
+# Normaliza finais de linha (LF) em todo o repositório — CRLF quebra scripts
+# dentro de containers Linux e gera diffs falsos entre Windows e CI.
+* text=auto eol=lf
+
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.woff2 binary

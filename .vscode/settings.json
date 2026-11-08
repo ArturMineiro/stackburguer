@@ -1,5 +1,8 @@
 {
-    "liveServer.settings.CustomBrowser": "chrome",
-    "liveServer.settings.root": "",
-    "liveServer.settings.showOnStatusbar": true
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": { "editor.defaultFormatter": "astro-build.astro-vscode" },
+  "eslint.validate": ["javascript", "typescript", "astro"],
+  "files.eol": "\n",
+  "json.schemas": [{ "fileMatch": ["src/data/cardapio.json"], "url": "./src/data/cardapio.schema.json" }]
 }
