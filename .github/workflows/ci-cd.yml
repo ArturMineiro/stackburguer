@@ -59,7 +59,8 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          # A versão do sistema entra na chave: binários do WebKit mudam entre Ubuntu 24 e 26.
+          key: playwright-ubuntu-24.04-${{ runner.arch }}-${{ hashFiles('package-lock.json') }}
 
       - name: Instalar navegadores (Chromium, WebKit, Firefox)
         run: npx playwright install --with-deps chromium webkit firefox
