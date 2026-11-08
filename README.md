@@ -176,7 +176,7 @@ O workflow [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) roda a c
 
 1. **Qualidade e build:** lint, tipos, testes unitários, build (site + PDFs + prévia) e e2e em 3 navegadores.
 2. **Imagem Docker:** build e *smoke test* do container.
-3. **Deploy:** publica o `dist/` via FTP e **confirma que a versão nova está no ar** (`/version.json`).
+3. **Deploy:** publica o `dist/` via FTP com **lftp** (reconecta e repete sozinho se a conexão cair) e **confirma que a versão nova está no ar** (`/version.json`). Imagens, CSS e JS têm hash no nome, então só sobem quando mudam; HTML e PDFs sobem sempre, por último.
 
 ### Configuração (uma vez)
 
@@ -194,7 +194,7 @@ Em **Settings → Secrets and variables → Actions** do repositório:
 
 > **Recomendado:** crie no hPanel uma **conta FTP dedicada** cujo diretório seja a pasta do subdomínio e use `FTP_SERVER_DIR=./`. Assim o deploy não consegue tocar em nenhum outro site da mesma conta.
 
-**Trava de segurança:** antes de publicar, o workflow lista a pasta remota e só continua se ela já for a do cardápio (`version.json` deste projeto ou os arquivos da versão antiga) ou estiver vazia. Isso evita sobrescrever outro site por engano. O arquivo de controle do FTP tem nome próprio (`.ftp-deploy-stackburguer.json`) e o `.htaccess` bloqueia o acesso a ele.
+**Trava de segurança:** antes de publicar, o workflow lista a pasta remota e só continua se ela já for a do cardápio (`version.json` deste projeto ou os arquivos da versão antiga) ou estiver vazia. Isso evita sobrescrever outro site por engano.
 
 ## 📁 Estrutura
 

@@ -6,7 +6,8 @@ name: CI/CD
 # Configuração (Settings → Secrets and variables → Actions):
 #   Secrets:   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
 #   Variables: FTP_SERVER_DIR  (pasta do site no FTP, terminando com "/"; ex.: ./ — a conta FTP do site na Hostinger já abre na pasta dele)
-#              FTP_PROTOCOL    (opcional: ftp [padrão] ou ftps)
+#              FTP_PROTOCOL    (opcional: ftp [padrão] ou ftps — para ftps, use em FTP_SERVER o
+#                               hostname *.hstgr.io do servidor, que é o nome no certificado)
 #              SITE_URL        (opcional: padrão https://steakburger.forgedevapps.com)
 #              MESAS           (opcional: quantidade de cartões de mesa no PDF)
 
@@ -190,17 +191,46 @@ jobs:
             exit 1
           fi
 
+      - name: Instalar o lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp > /dev/null
+
+      # lftp reconecta e repete automaticamente quando a Hostinger derruba uma
+      # conexão de dados (a action de FTP desistia no primeiro "ECONNRESET").
+      # Ordem: primeiro os arquivos com hash (imagens/CSS/JS) — só os novos, e os
+      # antigos são removidos —; por último HTML, PDFs e afins, sempre atualizados.
+      # Assim ninguém vê uma página apontando para um arquivo que ainda não subiu.
       - name: Publicar via FTP
-        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
-          local-dir: ./dist/
-          server-dir: ${{ vars.FTP_SERVER_DIR || secrets.FTP_SERVER_DIR }}
-          # Nome próprio para não colidir com o estado de outros sites na mesma conta.
-          state-name: .ftp-deploy-stackburguer.json
+        env:
+          FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftp' }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ "$FTP_PROTOCOL" = "ftps" ]; then
+            tls="set ftp:ssl-force true; set ftp:ssl-protect-data true"
+          else
+            tls="set ftp:ssl-allow false"
+          fi
+          set +e
+          lftp -c "
+            $tls
+            set net:timeout 30
+            set net:max-retries 8
+            set net:persist-retries 8
+            set net:reconnect-interval-base 5
+            set net:reconnect-interval-max 30
+            set ftp:passive-mode true
+            open -u '$FTP_USERNAME' --env-password 'ftp://$FTP_SERVER'
+            cd '$FTP_SERVER_DIR'
+            mirror --reverse --delete --ignore-time --no-perms --parallel=3 --verbose=1 dist/_astro _astro
+            mirror --reverse --no-perms --parallel=3 --verbose=1 --exclude ^_astro/ dist .
+          " > deploy.log 2>&1
+          status=$?
+          set -e
+          tail -n 20 deploy.log
+          if [ "$status" -ne 0 ] || grep -qiE 'fatal error|access failed' deploy.log; then
+            echo "::error::Falha no envio FTP: $(grep -iE 'error|fatal|failed' deploy.log | tail -n 3 | tr '\n' ' ')"
+            exit 1
+          fi
+          echo "✓ $(grep -c '^Transferring file' deploy.log) arquivos enviados"
 
       - name: Confirmar a nova versão no ar
         run: |
