@@ -5,7 +5,7 @@ name: CI/CD
 #
 # Configuração (Settings → Secrets and variables → Actions):
 #   Secrets:   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
-#   Variables: FTP_SERVER_DIR  (pasta do site no FTP, terminando com "/"; ex.: ./ ou public_html/steakburger/)
+#   Variables: FTP_SERVER_DIR  (pasta do site no FTP, terminando com "/"; ex.: ./ — a conta FTP do site na Hostinger já abre na pasta dele)
 #              FTP_PROTOCOL    (opcional: ftp [padrão] ou ftps)
 #              SITE_URL        (opcional: padrão https://steakburger.forgedevapps.com)
 #              MESAS           (opcional: quantidade de cartões de mesa no PDF)
@@ -138,7 +138,7 @@ jobs:
       FTP_SERVER: ${{ secrets.FTP_SERVER }}
       FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
       FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-      FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+      FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR || secrets.FTP_SERVER_DIR }}
     steps:
       - name: Baixar o site gerado
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
@@ -159,7 +159,7 @@ jobs:
           fi
           case "$FTP_SERVER_DIR" in
             */) ;;
-            *) echo "::error::FTP_SERVER_DIR precisa terminar com '/' (ex.: ./ ou public_html/steakburger/)"; exit 1 ;;
+            *) echo "::error::FTP_SERVER_DIR precisa terminar com '/' (ex.: ./ — a conta FTP do site na Hostinger já abre na pasta dele)"; exit 1 ;;
           esac
 
       # Evita publicar por engano em outra pasta (ex.: a do portfólio na mesma conta):
@@ -197,7 +197,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ${{ vars.FTP_PROTOCOL || 'ftp' }}
           local-dir: ./dist/
-          server-dir: ${{ vars.FTP_SERVER_DIR }}
+          server-dir: ${{ vars.FTP_SERVER_DIR || secrets.FTP_SERVER_DIR }}
           # Nome próprio para não colidir com o estado de outros sites na mesma conta.
           state-name: .ftp-deploy-stackburguer.json
 

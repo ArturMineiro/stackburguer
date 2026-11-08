@@ -187,7 +187,7 @@ Em **Settings → Secrets and variables → Actions** do repositório:
 | Secret | `FTP_SERVER` | Host FTP da Hostinger (hPanel → Arquivos → Contas FTP) |
 | Secret | `FTP_USERNAME` | Usuário FTP |
 | Secret | `FTP_PASSWORD` | Senha FTP |
-| Variable | `FTP_SERVER_DIR` | Pasta do site no FTP, terminando com `/` |
+| Variable | `FTP_SERVER_DIR` | Pasta do site no FTP, terminando com `/`. Na Hostinger, a conta FTP do site já abre dentro da pasta dele: use `./` |
 | Variable (opcional) | `FTP_PROTOCOL` | `ftp` (padrão) ou `ftps` |
 | Variable (opcional) | `MESAS` | Quantidade de cartões de mesa no PDF |
 | Variable (opcional) | `SITE_URL` | Padrão: `https://steakburger.forgedevapps.com` |

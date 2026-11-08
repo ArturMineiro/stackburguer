@@ -1,4 +1,6 @@
 # Cardápio digital — configuração para Hostinger (LiteSpeed/Apache).
+# O redirecionamento para HTTPS é feito pela CDN da Hostinger (hPanel → SSL),
+# antes de chegar aqui; repetir a regra neste arquivo só arriscaria um loop.
 
 Options -Indexes
 DirectoryIndex index.html
@@ -6,14 +8,6 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
-  # Força HTTPS (regra padrão da Hostinger). A checagem do X-Forwarded-Proto
-  # evita loop quando a CDN da Hostinger já recebeu a visita em HTTPS.
-  RewriteCond %{HTTPS} off
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteCond %{REQUEST_URI} !^/\.well-known/
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
   # Bloqueia arquivos ocultos (ex.: estado do deploy FTP), exceto .well-known
   RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
 </IfModule>
