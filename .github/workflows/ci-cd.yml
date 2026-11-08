@@ -30,7 +30,7 @@ env:
 jobs:
   build:
     name: Qualidade, testes e build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - name: Obter código
@@ -91,7 +91,7 @@ jobs:
 
   docker:
     name: Imagem Docker
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - name: Obter código
@@ -126,7 +126,7 @@ jobs:
     name: Deploy na Hostinger
     needs: build
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     environment:
       name: production
